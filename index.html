@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+ body {
+    
+    background-color: green; /* Initial color */
+    animation: changeBackgroundColor 5s infinite alternate; /* Animation properties */
+  }
+/* 
+  @keyframes changeBackgroundColor {
+    0% {
+      background-color: green;
+    }
+    25% {
+      background-color: rgb(90, 221, 90);
+    }
+    50% {
+      background-color: rgb(6, 63, 6);
+    }
+    75% {
+      background-color: rgb(9, 61, 9);
+    }
+    100% {
+      background-color: rgb(84, 219, 84);
+    }
+  } */
+
+
+
+
+
+#navdiv{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(128, 128, 233);
+}
+
+
+
+#navdiv {
+    
+    background-color: rgb(2, 36, 2); /* Initial color */
+    animation: navigation 5s infinite alternate; /* Animation properties */
+  }
+
+  @keyframes changeBackgroundColor {
+    0% {
+      background-color: rgb(26, 27, 26);
+    }
+    25% {
+      background-color: rgb(39, 51, 39);
+    }
+    50% {
+      background-color: rgb(10, 19, 10);
+    }
+    75% {
+      background-color: rgb(8, 15, 8);
+    }
+    100% {
+      background-color: rgb(7, 7, 7);
+    }
+  }
+
+   
+        #topnav li{
+   display: inline-block;
+   margin: 10px;
+            color: white;
+        }
+
+        #topnav li:hover{
+            background-color: black;
+            color: white;
+        }
+        #container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+            background-color: darkolivegreen;
+        }
+
+        #container div{
+            flex-wrap: wrap;
+            flex:4 auto 2;
+            flex-flow: row;
+
+            width:50%;
+            display: inline-block;
+            gap: 5;
+
+            padding: 20px;
+        }
+
+        button{
+            padding: 10px;
+            background-color: lightblue;
+            border-radius: 20px;
+            color: darkblue;
+        }
+        button:hover{
+          background-color: darkblue;
+          color:white;
+
+        }
+
+        #gallaryDisplay *:not(.prev,.next){
+
+            width: 100%;
+            height: 100%;
+        }
+        #maincontent{
+          color:white;
+        }
+        button{
+          margin:  0px 10px 2px 10px;
+          background-color: lightblue;
+          color: darkblue;
+          padding: 10px;
+        }
+</style>
+
+<!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+<script src="JqueryPlugin/jquery.js"></script>
+<!-- <script src="JqueryPlugin/jquery.ui.js"></script> -->
+
+<link rel="stylesheet" href="css/slide.css">
+
+</head>
+
+<body>
+
+    <div id="navdiv"> 
+        <nav>
+            <ul id="topnav">
+                <li>
+                    Home
+                </li>
+                 <li>
+                     <span> Signup </span>  <span> login </span>
+                </li>
+                
+                <li>contact us</li>
+
+                <li>vision </li>
+
+                <li>news </li>
+                <li>Our Almamater </li>
+                <li>Socail Media </li>
+
+
+            </ul>
+        </nav>
+    </div>
+    <br>
+<div class="color-changing-box"></div>
+
+
+
+<h1 style="color:lightblue; background-color:black;">This Site  is Under Construction </h1>
+
+<div>
+<button> Open Poll</button>  <button> Voting Result</button> <button>Normination</button>
+ <img src="images/entranceGood.png" width="50px" height="50px" style="vertical-align: middle; margin-bottom: 10px;"/>
+</div>
+
+<div id="container">
+
+
+    <div id="maincontent">
+        <h1>Welcome To TheScolars</h1>
+        <h4> Vote for your favourite contestant. <button>Vote Now</button> </h4>
+
+        <hr>
+        <h1> Became a partipant / contestant (18 years +) male and female :  <button>Applicant-Form </button></h1>
+        
+        
+     </div>
+
+
+
+     <div>
+        <img src="images/Thescholars.jpg" width="100%" height="100%" />
+
+     </div>
+
+<div id="news" style="width:20%; height:100%;min-height: 300px; background-color: black;  margin:20px 30px 10px 0px;">
+    <h5 style="color: white;">News</h5>
+    <form>
+
+        <input type="text" placeholder="search contestant here">
+    </form>
+
+</div>
+
+
+
+<script>
+
+
+
+// function parseURLParams(url) {
+// var queryStart = url.indexOf("?") + 1,
+//     queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+//     query = url.slice(queryStart, queryEnd - 1),
+//     pairs = query.replace(/\+/g, " ").split("&"),
+//     parms = {}, i, n, v, nv;
+
+// if (query === url || query === "") return;
+
+// for (i = 0; i < pairs.length; i++) {
+//     nv = pairs[i].split("=", 2);
+//     n = decodeURIComponent(nv[0]);
+//     v = decodeURIComponent(nv[1]);
+
+//     if (!parms.hasOwnProperty(n)) parms[n] = [];
+//     parms[n].push(nv.length === 2 ? v : null);
+// }
+// return parms;
+// }
+
+// var url = window.location.href;
+// let params = (new URL(url)).searchParams;
+// var cpuSerialNumber =  params.get('cpuSerialNumber');
+// //var hddSerialNumber = params.getAll('name');
+// var hddSerialNumber = params.get('hddSerialNumber');
+// var macAddress = params.get('macAddress');
+
+
+// var getUserAgentInformation= {
+// cpuSerialNumber,hddSerialNumber,macAddress
+// };
+
+
+//   window.localStorage.setItem("cpuSerialNumber", cpuSerialNumber);
+//   window.localStorage.setItem("hddSerialNumber", hddSerialNumber);
+//   window.localStorage.setItem("macAddress", macAddress);
+
+
+</script>
+
+
+</div>
+
+
+
+<div id="gallaryDisplay"  style="width: 80%; height: 400px; margin: 0% 10% 0% 10%;" >
+
+    
+    <div class="slideshow-container"  style="width:100%; height: 100%;">
+    <div class="myslides fade">
+        <img src="images/contestant2.png" width="100%" height="100%" />
+    </div>
+    
+  <div class="myslides fade">
+    <img src="images/maleandfemale.png" width="100%" height="100%" />
+
+  </div>
+
+  <div class="myslides fade">
+    <img src="images/menStyle.png" width="100%" height="100%" />
+
+  </div>
+
+  
+  <a class="prev">&#10094;</a>
+
+  <a class="play">|>|</a>
+
+  <a class="next">&#10095;</a>
+   </div>
+</div>
+
+
+
+
+<script src="script/slideShow.js"></script>
+</body>
+</html>
