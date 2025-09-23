@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .important{
+            color:red;
+            margin: 5px;
+        }
+        body{
+            background-color: darkolivegreen;
+        }
+    </style>
+    <script src="script/stateAndEdu.js"></script>
+        <script src="../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+      <script src="script/uploadFile.js"></script>
+
+
+      
+</head>
+<body>
+    
+    <center>
+
+        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Home page</button></a>
+        <h1><u>ThescholarsNG Season 1: Registration Form</u></h1>
+        <h3>Contest for 60 Million Naira Award Show. </h3>
+        <h4>Process involve are 
+            <div style="width:fit-content;text-align: left;">
+
+           (1) Register to participate >  <br>
+            (2) Entry Normination (Interview)>  <br>
+            (3) Stages of Vote and contestant Activities >   <br>
+            (4) Last Man Standing</h4>
+            </div>
+        <h5>You most not be a winner to be awarded. Your enagement, vote, passion and activities can award you to something equivalent to winner.</h5>
+
+        <hr> More detail about 1st, 2nd, 3rd, 4th, 5th,........and activities... visit <button>About Page</button>
+        <hr>
+        <h2>Fill form bellow and wait for Entry Normination or selection proces.....</h2>
+       
+        <span> This symbol <span class="important">*</span> indicate important field.</span> <br>
+        <table>
+            <tr>
+                <td>Name <span class="important">*</span>:</td>   
+                <td><input type="text" placeholder="First_Name  LastName   OtherName "  id="name" style="width:300px"  required></td>
+            </tr>
+            <tr>
+                <td>Nick Name (Alias):</td>   
+                <td><input type="text" placeholder="Nick Name" id="nickName"  style="width:300px" ></td>
+            </tr>
+            
+            <tr>
+                <td>Email<span class="important">*</span>:</td>   
+                <td><input type="email"  id="email" placeholder="enter your email" required></td>
+            </tr>
+
+             <tr>
+                <td>Date of Birth <span class="important">*</span>:</td>   
+                <td><input type="date"  id="dateOfBirth" required></td>
+            </tr>
+            <tr>
+                <td>State of Origin  <span class="important">*</span>:</td>   
+                <td><select id="stateOfOrigin"  required></select></td>
+
+            </tr>
+
+             <tr>
+                <td>State of Resident <span class="important">*</span>:</td>   
+                <td><select id="stateOfResident"  required></select></td>
+             </tr>
+            <tr>
+                <td>Residential Address <span class="important">*</span>:</td>   
+                <td><input type="text" placeholder="Residential Address"  id="residentAddress" style="width:300px"  required></td>
+            </tr>
+             <tr>
+                <td>(Main) Mobile Number <span class="important">*</span>:</td>   
+                <td><input type="tel" placeholder="Main Tel"   style="width:300px"  id="mainTel" required></td>
+            </tr>
+             <tr>
+                <td>(Alt) Mobile Number <span class="important">*</span>:</td>   
+                <td><input type="tel" placeholder="Alternative Tel" id="altTel"  style="width:300px"  required></td>
+            </tr>
+             <tr>
+                <td colspan="2">Why do you join ThescholarsNG, Your hoobies and What will you do with the found as a winner: <span class="important">*</span>:</td>   
+            </tr>
+
+            <tr>
+                <td colspan="2"><textarea placeholder="Enter answer here" style="width:100%;" id="TheScholarsQuestion" required ></textarea></td>
+            </tr>
+
+            <tr>
+                <td>Highest Quelification:</td>
+                <td><select id="educationQuelification"  required></select></td>
+
+            </tr>
+
+            <tr>
+                <td>Course of study (qualification):</td>
+                <td><input type="text" id="courseOfStudy"  placeholder="higest qualification"></td>
+
+            </tr>
+
+             <tr>
+                <td>Passport/Photograph:</td>
+                <td><input type="file" id="passport"  placeholder="passport"></td>
+
+            </tr>
+
+             <tr>
+                <td  colspan="2" style="color:blue; text-align: center;">
+                    <br>
+                    Crosscheck before submitting</td>
+
+            </tr>
+
+             <tr>
+                <td  colspan="2" style="color:darkred; text-align: center;">
+                    <br>
+                   <h3 id="errorUnit"></h3></td>
+
+            </tr>
+
+
+            <tr>
+                <td colspan="2" style="color:red; text-align: center;">
+                    <br>
+                 <button id="submit"> Submit </button>   &nbsp; &nbsp; <span id="progresscounter" style="color:blue"></span> </td>
+
+            </tr>
+
+        </table>
+    </center>
+    <br>
+    <br>
+
+    <script>
+        var stateOfResident = document.getElementById("stateOfResident");
+        var stateOfOrigin = document.getElementById("stateOfOrigin");
+        var educationQuelification = document.getElementById("educationQuelification");
+
+
+        
+        //stateOfResident.
+        var val;
+        Array.from(NigState).forEach((data)=>{
+
+            val+= `<option>${data}</option>`;
+        })
+
+        stateOfResident.innerHTML = val;
+        stateOfOrigin.innerHTML = val;
+
+        var edu;
+        Array.from(EducationCert).forEach((data)=>{
+
+            edu+= `<option>${data}</option>`;
+        })
+        educationQuelification.innerHTML = edu;
+
+
+
+    </script>
+
+
+<script type="module" src="./script/participantForm.js"></script>
+
+</body>
+</html>

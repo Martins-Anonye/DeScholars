@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    
+
+
+    <center>
+        <h1>Add Title of Competition / Troophy</h1>
+
+
+        <form>
+
+            <table>
+
+                <tr>
+                    <td>
+                        Title:
+                    </td>
+
+                    <td>
+            <input type="text" placeholder="enter title of Competition _Troophy" id="title" required>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Title Alias</td>
+
+                    <td><input type="text" placeholder="Abriviated Name" id="aliasName" required></td>
+                </tr>
+                <tr>
+                    <td>Start Date: </td>
+
+                    <td>
+                      <input type="date" placeholder="start Date" id="startDate" required>
+
+                    </td>
+                </tr>
+
+
+                  <tr>
+                    <td>End Date: </td>
+
+                    <td>
+                      <input type="date" placeholder="start Date" id="endDate" required>
+
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        Description :
+                    </td>
+
+                    <td>
+                        <Textarea placeholder="description and purpose" id="description" required>
+
+                    </Textarea>
+                    </td>
+                    
+                </tr>
+
+                <tr>
+                    <td>
+                        Age Limit
+                    </td>
+
+                    <td>
+                        <input type="number" placeholder="enter age" id="ageLimite"  required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cover Image:
+                    </td>
+                    <td>
+                        <input type="file" placeholder="choose cover image" id="coverImage" required>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+
+            <button type="submit" id="submit">Add Troophy</button>
+        </form>
+
+
+        <br>
+          <br>
+          <hr/>
+        <div>
+            <h3>Existing Competition</h3>
+
+
+            <table>
+
+            </table>
+        </div>
+    </center>
+
+
+    
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+<script  src="script/fireconfiguration.js"> </script>
+</body>
+</html>
