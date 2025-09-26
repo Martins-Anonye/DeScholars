@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mainCon {
+            background-image: url("/images/campusImage.jpg");
+            display: flex;
+            justify-content: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+        }
+
+
+
+        #backgroundPhoto{
+            color:white;
+            background-image: url(images/cvpaper.jpg);
+             background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width:100%;
+            height: 100%;
+            z-index: 1;
+            position: fixed; 
+
+        }
+
+        #imagesHolderMaker{
+            width:100%;
+            height: 100%;
+        }
+    #coverImage{
+             width:100%;
+            height: 100%;
+            z-index: 2;
+            position: fixed;  
+
+            background-color: black;
+            opacity: 0.5;
+     }
+
+
+
+        .wrapper h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        .wrapper {
+            background: transparent;
+            width: 420px;
+            margin-top: 100px;
+            padding: 30px 50px;
+           /*  backdrop-filter: blur(15px); */
+            border: 3px solid rgba(255, 255, 255, .2);
+            height: 420px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wrapper .input-box {
+            width: 100%;
+            height: 30px;
+            margin: 10px;
+        }
+
+        .wrapper .input-box input {
+            width: 100%;
+            outline: none;
+            border: none;
+            height: 100%;
+            background: transparent;
+            border-bottom: 2px solid #ffffff;
+            color: white;
+        }
+
+        .wrapper .input-box input::placeholder {
+            color: #fff;
+            font-size: 15px;
+            font-family: monospace;
+
+        }
+
+        .wrapper .checkbox {
+            text-align: center;
+            margin: 5px;
+            color: #fff;
+        }
+
+       
+
+        .wrapper .btn button {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 20px;
+            border: none;
+            background: #ffffff;
+        }
+
+        
+
+        #myBtn:active {
+            background-color: hsl(0, 0%, 80%);
+        }
+        a{
+            color: lightblue;
+        }
+        a:visited{
+
+        }
+        a:link{
+
+        }
+
+        .menudiv{
+            position: absolute;
+             text-align: center; 
+             top:5%;
+             width: 100%; 
+             height: auto;
+             z-index: 2;
+        }
+        .menudiv button, .btn{
+            width: 80px;
+            border-radius: 10px;
+            
+            background-color: black;
+            color:lightblue;
+            padding: 2px;
+            font-size: 14px;
+        }
+
+        .menudiv button:hover, .btn:hover{
+            background-color: white;
+            color:blue;
+
+        }
+        .menudiv a{
+            text-decoration: none;
+        }
+        .btn{
+            width:150px;
+            padding: 5px;
+        }
+    </style>
+   
+    <script src="/FirebaseConnection/FirebaseConfiggFile.js"></script>
+    <!-- Include the  sweetalert2@9 library   for pop alert box-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9">
+    </script>
+    <script src="../LocalStorageVariableHolder/LocalStorageVariableHolder.js"></script>
+
+</head>
+
+<body>
+
+    <div id="backgroundPhoto">
+        <img  id="imagesHolderMaker" width="100%" height="100%" />
+       </div>
+       <div id="coverImage">
+
+    </div>
+
+    <img src="/images/logo/PendroAIok.png" width="100px" height="80px"  style="float:left;position: absolute;left:20px;top:20px;z-index: 50;background-color: bisque;"/>
+
+   
+    
+    <div id="mainCon">
+
+
+        <div class="menudiv">
+            <a href="/"> <button class="btn-white">HOME</button> </a>
+            <a href=""> <button class="btn-white">Schools</button> </a>
+    
+            <a href=""> <button class="btn-white">About</button> </a>
+            <a href=""><button class="btn-white">Contact</button> </a>     
+      </div>
+        <div class="wrapper">
+
+
+            
+            <h1>Create Account</h1>
+
+            <span style="font-size: 16px;color:white">Recommended approach:</span>
+            <a href="/signUpUsingGoogleButton">
+            <button style="vertical-align: middle;border-radius: 20px;">google signUp<img src="images/social-google-1-filled_large@3x.png" width="30px" height="30px" style="vertical-align: middle;"/> </button>
+            </a>
+            <hr>
+
+            <form action="" method="post"  id="signUpForm">
+
+               
+                <div class="input-box">
+                    <input type="email" name="email" id="email" required placeholder="Enter Email">
+                </div>
+
+                <div class="input-box">
+                    <input type="email" name="confirmEmail" id="confirmEmail" required placeholder="Confirm Email">
+                </div>
+                <div class="input-box">
+                    <input type="Password" name="password" id="password" required placeholder="Enter Password : min of 8 in length"
+                        minlength="8" maxlength="8">
+                </div>
+
+                
+                <div class="input-box">
+                    <input type="Password" name="confirmPassword" id="confirmPassword" required placeholder="Confirm Password"
+                        minlength="8" maxlength="8">
+                </div>
+
+                <div class="checkbox" style="text-align: left; display: flex; justify-content: space-between; margin-top: 10px;">
+                    <div>
+                        <input type="checkbox">I accept terms and condition, and promise to abide on it. <span> <a href="">Terms and Condition </a></span>
+                    </div>
+                  
+                </div>
+
+                <h3 id="messageDisplay"></h3>
+
+               
+              
+                    <button  class="btn" id="signUpBtn">Create</button>
+                
+
+                <div style="color:white">
+                    <hr style="background-color: darkblue;">
+                    Already have account  :<a href="/signinSystem" style="color:lightblue">login</a>
+
+                    <br>
+                    <br>
+                    Account Recovery :  <a href="/accountRecovery" style="color:lightblue">Recover Account</a>
+                </div>
+            </form>
+          
+
+
+           
+        </div>
+    </div>
+
+    
+    
+    
+<script type="module" src="../signUpAndSignInAssets/scriptSignUpEmailVerification.js"></script>
+
+
+
+
+</body>
+
+</html>

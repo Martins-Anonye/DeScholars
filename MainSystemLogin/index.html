@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+
+#navdiv{
+    width: 100%;
+    height: 50px;
+    background-color: darkblue;
+}
+   
+        #topnav li{
+   display: inline-block;
+   margin: 10px;
+            color: white;
+        }
+        #container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+            background-color: aqua;
+        }
+
+        #container div{
+            flex-wrap: wrap;
+            flex:4 auto 2;
+            flex-flow: row;
+
+            width:50%;
+            display: inline-block;
+            gap: 5;
+
+            padding: 20px;
+        }
+
+      
+        h1{
+            color:darkblue;
+            background-color: aqua;
+        }
+
+
+        button{
+            padding: 10px;
+            background-color: darkblue;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .slide{
+            display: inline-block;
+            width:fit-content;
+            color: rebeccapurple;
+            padding: 10px;
+        }
+        .slideDivider{
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div id="navdiv"> 
+        <nav>
+            <ul id="topnav">
+                <li>
+                    Home
+                </li>
+                 <li>
+                     <span> Signup </span>  <span> login </span>
+                </li>
+
+                <li>
+                   Wallet 
+                </li>
+                
+                <li>News</li>
+
+                <li>Update</li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+   <div>
+
+    
+   
+
+    version 1.0 available: <button>Download Here</button> &nbsp; &nbsp;&nbsp; 
+    See changes in the latest update : <button>What is new ?</button> <br>
+   Our Activities: <marquee><div class="slide">WAEC</div> 
+   <span class="slideDivider">|</span> 
+   <div class="slide">JAMB 1963 till date in All Subject</div></marquee>
+   </div>
+   <div id="container">
+
+
+        <div id="maincontent">
+            <h1>Welcome To Exam Server System</h1>
+            <h4>You are seeing this page for subscription <br> purpose of Jamb Past Question Pratcise. </h4>
+
+            <h4>Kindly login to start subscription, If you dont have account, Signup first !</h4>
+
+    
+            <div><a href="/signinSystem"><button>Login</button></a>  &nbsp; &nbsp;
+                 <a href="/signupSystem"> <button>SignUp</button></div></a>
+        </div>
+
+
+    <div id="gallaryDisplay">
+
+        <img src="images/campusImage.jpg" width="100%" height="auto" />
+    </div>
+
+
+
+    <script>
+
+
+
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") return;
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+
+var url = window.location.href;
+let params = (new URL(url)).searchParams;
+var cpuSerialNumber =  params.get('cpuSerialNumber');
+//var hddSerialNumber = params.getAll('name');
+var hddSerialNumber = params.get('hddSerialNumber');
+var macAddress = params.get('macAddress');
+
+
+var getUserAgentInformation= {
+    cpuSerialNumber,hddSerialNumber,macAddress
+};
+
+
+      window.localStorage.setItem("cpuSerialNumber", cpuSerialNumber);
+      window.localStorage.setItem("hddSerialNumber", hddSerialNumber);
+      window.localStorage.setItem("macAddress", macAddress);
+    </script>
+
+
+</div>
+</body>
+</html>

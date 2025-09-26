@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+
+
+    <style>
+          .menudiv{
+            position: absolute;
+             text-align: center; 
+             top:5%;
+             width: 100%; 
+             height: auto;
+            z-index: 2;
+        }
+        .menudiv a{
+            text-decoration: none;
+        }
+        .menudiv button, .btn{
+            width: 80px;
+            border-radius: 10px;
+            
+            background-color: black;
+            color:lightblue;
+            padding: 2px;
+            font-size: 14px;
+        }
+
+        .menudiv button:hover, .btn:hover{
+            background-color: white;
+            color:blue;
+
+        }
+    </style>
+
+<script src="../FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+</head>
+<body>
+    
+
+    <div style="text-align: center;">
+        <div class="menudiv">
+            <a href="/"> <button class="btn-white">HOME</button> </a>
+            <a href=""> <button class="btn-white">Schools</button> </a>
+    
+            <a href=""> <button class="btn-white">About</button> </a>
+            <a href=""><button class="btn-white">Contact</button> </a>       
+      </div>
+      <br><br><br>
+        
+        <h4>Enter password bellow to continue signup with auto verification.</h4>
+
+
+        <span>Password will be required during login with email and password </span> <br><br>
+        <input type="password" placeholder="Enter Password : min of 8 in length"  id="passwordSignupGoogle"
+        maxlength="8" minlength="8" required style="width:300px;padding: 5px; border-radius: 10px;text-align: center;"> <br> <br>
+
+<input type="button" id="googleSignIn" value="Google Sign up"/>
+
+<br>
+
+<span id="error"  style="color:red;display:none;"></span>
+               
+</div>
+    <script type="module" src="/SignInGoogleButton/ScriptMaker/scriptGoogleBTNSignup.js"></script>
+</body>
+</html>

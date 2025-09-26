@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+
+#navdiv{
+    width: 100%;
+    height: 50px;
+    background-color: darkblue;
+}
+   
+        #topnav li{
+   display: inline-block;
+   margin: 10px;
+            color: white;
+        }
+        #container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+            background-color: aqua;
+        }
+
+        #container div{
+            flex-wrap: wrap;
+            flex:4 auto 2;
+            flex-flow: row;
+
+            width:50%;
+            display: inline-block;
+            gap: 5;
+
+            padding: 20px;
+        }
+
+      
+        h1{
+            color:darkblue;
+            background-color: aqua;
+        }
+
+
+        button{
+            padding: 10px;
+            background-color: darkblue;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .slide{
+            display: inline-block;
+            width:fit-content;
+            color: rebeccapurple;
+            padding: 10px;
+        }
+        .slideDivider{
+            color: rebeccapurple;
+        }
+    </style>
+    <script  src="FirebaseLoginSystem/LocalStorageVariableHolder/LocalStorageVariableHolder.js"></script>
+
+    <script  src="myOtherFiles/checkAcctSubscriptionStatus.js"></script>
+
+    
+</head>
+<body>
+
+    
+    <div id="navdiv"> 
+        <nav>
+            <ul id="topnav">
+                <li style="vertical-align: middle;">
+                    <img src="/images/logo/PendroAIok.png" width="40px" height="35px"  
+                    style="float:left;
+                    z-index: 50;background-color: bisque; vertical-align: middle;"/> 
+      
+                </li>
+                <li>
+                    Home
+                </li>
+                 <li>
+                     <span> Signup </span>  <span> login </span>
+                </li>
+
+                <li>
+                   Wallet 
+                </li>
+                
+                <li>News</li>
+
+                <li>Update</li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+   <div>
+
+    version 1.0 available: <button>Download Here</button> &nbsp; &nbsp;&nbsp; See changes in the latest update : <button>What is new ?</button> <br>
+   Our Activities: <marquee><div class="slide">WAEC</div> <span class="slideDivider">|</span> <div class="slide">JAMB 1963 till date in All Subject</div></marquee>
+   </div>
+   <div id="container">
+
+
+        <div id="maincontent">
+            <h1>Welcome To Exam Server System</h1>
+            <h4>You are seeing this system for subscription purpose of Jamb Past Question Pratcise </h4>
+
+            <h4>Kindly login to start subscription, If you dont have account, Signup first !</h4>
+
+
+
+     <script>
+         var localEmailVerificantioHolder = new LocalEmailVerificantioHolder();
+
+         var yesNoEmailVerified =  localEmailVerificantioHolder.getEmailVerified();
+           var userEmail = localEmailVerificantioHolder.getEmail();
+           
+           document.write(`<h4>${userEmail}</h4>`);
+
+                // if( yesNoEmailVerified == "no"){
+                //     document.getElementById("emailVerification").style.display="inline-block"
+                // }
+                
+
+                // var startSbuscription = document.getElementById("startSbuscription");
+                // startSbuscription.addEventListener("click", e=>{
+
+                //     window.location.href=`/startSubscrption?email=${userEmail}`;
+                // });
+
+             
+            </script>
+
+
+
+          <div>
+
+
+            <div id="subAccStatus" style="width:80%; display:inline-block">
+
+            </div>
+     
+
+            <!-- <a ><button id="startSbuscription">Start Subscription</button></a>   -->
+                 <a href="/signinSystem"> <button>SignIn</button></div></a>
+            
+            <div id="emailVerification"   style="display:none"><a href="/accountRecovery"><button>verify Email</button></a></div>
+            <script>
+         var localEmailVerificantioHolder = new LocalEmailVerificantioHolder();
+
+         var yesNoEmailVerified =  localEmailVerificantioHolder.getEmailVerified();
+         
+              if( yesNoEmailVerified == "no"){
+                    document.getElementById("emailVerification").style.display="inline-block"
+                }
+                
+
+                var userEmail = localEmailVerificantioHolder.getEmail();
+
+                var destinationIfSuccessfull =  "";
+               
+
+                var subAccStatus = document.getElementById("subAccStatus");
+
+                 var subAccountStatus =   checkAcctSubcriptionStatusAndContinue(userEmail,"/PendroJambindex.html","Start Now") ;      
+                 subAccountStatus.then((result)=>{
+
+                    if(result != null){
+                       // var result  = result.text();
+                        subAccStatus.innerHTML = result;
+
+                        executeCheckSubscriptionAfterAddedToDOM();
+
+                    }
+                    
+                 }).catch(e=>{
+                    subAccStatus.innerHTML = e;
+
+                 });
+                 
+                 //alert(subAccountStatus);
+               
+
+                // var startSbuscription = document.getElementById("startSbuscription");
+                // var userEmail = localEmailVerificantioHolder.getEmail();
+
+                // startSbuscription.addEventListener("click", e=>{
+
+                //     window.location.href=`/startSubscrption?email=${userEmail}`;
+                // });
+
+
+             
+            </script>
+        </div>
+
+
+    <div id="gallaryDisplay">
+
+        <img src="images/campusImage.jpg" width="100%" height="auto" />
+    </div>
+
+
+
+    <script>
+
+
+
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") return;
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+
+var url = window.location.href;
+let params = (new URL(url)).searchParams;
+var cpuSerialNumber =  params.get('cpuSerialNumber');
+//var hddSerialNumber = params.getAll('name');
+var hddSerialNumber = params.get('hddSerialNumber');
+var macAddress = params.get('macAddress');
+
+
+      window.localStorage.setItem("cpuSerialNumber", cpuSerialNumber);
+      window.localStorage.setItem("hddSerialNumber", hddSerialNumber);
+      window.localStorage.setItem("macAddress", macAddress);
+
+
+      
+async function signUpForPlan(plan_code) {
+  let email = window.localStorage.getItem('customer_email');
+  let { authorization_url } = await fetch('/initialize-transaction-with-plan', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      amount: 50000,
+      plan: plan_code,
+    }),
+  })
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
+
+  window.location.href = authorization_url;
+}
+
+    </script>
+
+
+</div>
+</body>
+</html>
