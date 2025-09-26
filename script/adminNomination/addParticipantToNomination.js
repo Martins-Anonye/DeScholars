@@ -146,7 +146,7 @@ const pushId = newPostRef.key;
     var timestamp = Date.now();
 
 
-    var domainVoteURL = maintainanceSetting.domainLink+"?pushId="+pushId+"&timestamp="+timestamp+"&email="+email;
+    var domainVoteURL = maintainanceSetting.domainLink+"?voteLink=yes&pushId="+pushId+"&timestamp="+timestamp+"&email="+email;
 
 set(newPostRef,
           {
