@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .important{
+            color:red;
+            margin: 5px;
+        }
+        body{
+            background-color: darkolivegreen;
+        }
+    </style>
+        <script src="../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+
+
+      
+</head>
+<body>
+    
+    <center>
+
+        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Home page</button></a>
+        <h1><u>ThescholarsNG Season 1: Profile</u></h1>
+        <h3>Contest for 50 Million Naira and Scholarship Abroad </h3>
+        <h4>Process involve are 
+            <div style="width:fit-content;text-align: left;">
+
+           (1) Register to participate >  <br>
+            (2) Entry Normination (Audition)>  <br>
+            (3) Stages of Vote and contestant Activities >   <br>
+            (4) Last Man Standing</h4>
+            </div>
+        <h5>You most not be a winner to be awarded. Your enagement, vote, passion and activities can award you to something equivalent to winner.</h5>
+
+        <hr> More detail about 1st, 2nd, 3rd, 4th, 5th,........and activities... visit <button>About Page</button>
+        <hr>
+        <h2><input type="text" value="ajagbostephen@gmail.com"  id="searchEmail"> </h2>
+        <div>
+                <h1 colspan="2" style="color: chartreuse; text-align: center;">
+                     STATUS; <span id>Awaiting</span>
+                </h1>
+            </div>
+        
+        <span> This symbol <span class="important">*</span> indicate important field.</span> <br>
+        <table>
+           
+            <tr>
+                <td>Name <span class="important">*</span>:</td>   
+                <td><input type="text" placeholder="First_Name  LastName   OtherName "  id="name" style="width:300px"  readonly></td>
+            </tr>
+            <tr>
+                <td>Nick Name (Alias):</td>   
+                <td><input type="text" placeholder="Nick Name" id="nickName"  style="width:300px" readonly></td>
+            </tr>
+            
+            <tr>
+                <td>Email<span class="important">*</span>:</td>   
+                <td><input type="email"  id="email" placeholder="enter your email" readonly></td>
+            </tr>
+
+             <tr>
+                <td>Date of Birth <span class="important">*</span>:</td>   
+                <td><input type="text"  id="dateOfBirth" readonly></td>
+            </tr>
+            <tr>
+                <td>State of Origin  <span class="important">*</span>:</td>   
+                <td><input type="text" id="stateOfOrigin"  readonly></td>
+
+            </tr>
+
+             <tr>
+                <td>State of Resident <span class="important">*</span>:</td>   
+                <td><input type="text" id="stateOfResident"  readonly></td>
+             </tr>
+            <tr>
+                <td>Residential Address <span class="important">*</span>:</td>   
+                <td><input type="text" placeholder="Residential Address"  id="residentAddress" style="width:300px"  readonly></td>
+            </tr>
+             <tr>
+                <td>(Main) Mobile Number <span class="important">*</span>:</td>   
+                <td><input type="tel" placeholder="Main Tel"   style="width:300px"  id="mainTel" readonly></td>
+            </tr>
+             <tr>
+                <td>(Alt) Mobile Number <span class="important">*</span>:</td>   
+                <td><input type="tel" placeholder="Alternative Tel" id="altTel"  style="width:300px"  readonly></td>
+            </tr>
+           
+
+            <tr>
+                <td>Highest Quelification:</td>
+                <td><input id="educationQuelification"  readonly></td>
+
+            </tr>
+
+            <tr>
+                <td>Course of study (qualification):</td>
+                <td><input type="text" id="courseOfStudy"  placeholder="higest qualification"></td>
+
+            </tr>
+
+            
+
+        </table>
+
+
+
+        
+        <br>
+        <br>
+         <div>
+         <span>Why do you join ThescholarsNG, <br> Your hoobies and What will you do with the found as a winner ?</span>  
+
+           <br> <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="TheScholarsQuestion"  readonly ></textarea>
+            
+
+
+
+              <div colspan="2" style="color:lightblue"> Passport/Photograph: <br>
+                    <div style="display: flax; flex-direction: row;">
+
+                <img src="" type="file" id="passport1"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport2"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport3"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport4"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport5"  placeholder="passport"  width="200px" height="210px"/>
+
+                    </div>
+                </div>
+    </center>
+    <br>
+    <br>
+
+  
+
+<script type="module" src="./script/participantAppStatus.js"></script>
+
+</body>
+</html>

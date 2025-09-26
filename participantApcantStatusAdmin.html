@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .important{
+            color:red;
+            margin: 5px;
+        }
+        body{
+            background-color: darkolivegreen;
+        }
+
+
+          button{
+          margin:  0px 10px 2px 10px;
+          background-color: lightblue;
+          color: darkblue;
+          padding: 10px;
+        }
+          button:hover{
+          margin:  0px 10px 2px 10px;
+          background-color: blue;
+          color: white;
+          padding: 10px;
+        }
+    </style>
+        <script src="../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+
+<script  src="./script/developerMaintainanceSettings.js"></script>
+
+      
+</head>
+<body>
+    
+    
+    <center>
+
+        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Home page</button></a>
+       
+          <a href="AdminDashBoard.html"><button> Admin Dashboard </button> </a>
+
+        <h1><u>ThescholarsNG Season 1: Registration Status</u></h1>
+       <hr>
+        <h2><input type="text" placeholder="Enter email"  id="searchEmail"> 
+            <button id="checkStatus">Check</button>
+        </h2>
+
+          <hr>
+          <span><u>ADMIN NOMINATION LEVEL SETTINGS:</u></span>
+           <table>
+                <tr>
+                    <td>Previous Level :</td>
+                    <td><span id="fpreviousLevel"></span></td>
+                </tr>
+          
+                <tr>
+                   <td>Current Level :</td>
+                    <td><span id="fcurrentLevel"></span></td>
+                </tr>
+
+                <tr>
+                      <td>Next Level :</td>
+                    <td><span id="fnextLevel"></span></td>
+
+                </tr>
+                      
+                <tr>
+                        <td>Next Level Is Last Level ?</td>
+                    <td><span id="fnextLevelIsLast"></span></td>
+                </tr>
+                 <tr>
+                    <td>Timestamp of last update:</td>
+                    <td>
+                        <input type="text" id="timestamp" readonly/>
+                    </td>
+                </tr>
+             </table>
+             <hr>
+          <h2>
+                <span style="color: aqua;">Move This User TO </span>  <br> 
+               
+                <span><select id="LevelSelection" style="color: blue;">
+                    <option value="0">Registration Page (Remove / del Norm..)</option>
+                     <option value="1">Newly Nominated (level 1)</option> 
+                    <option value="2"> Nominated List (Next Level)</option>
+                    <option value="3">Revoke Nomination(Current Stage) </option>
+                    <option value="4">Revoke Nomination (Previous Stage) </option>
+
+
+
+                </select> <button id="movenow">MOVE NOW</button></span> <br>
+                <span id="errorUnit" style="color:red;background-color: aliceblue;"></span>
+                <hr>
+                
+                <br>
+                <u>Things to put into consideration:</u> <br> <br>
+                <span style="color:darkred">(1) Registration Page means;user was never Nominated or You deleted user  from Nomination list,
+                    <br> User can still access profile page only.  Profile page is denied when user is deleted.
+                </span>
+                
+                <br>
+                   <br>
+
+
+                   <span style="color:darkred">(2) Newly Nominated means,  User will be added to nonimated list.
+                </span>
+
+                <br>
+                <br>
+                  
+
+                <span style="color:lightblue">
+                     (3) Participant is qualified for next level means; updating user Nomination status  by : Nominated List (Next Level). 
+                     <br> This Changes current level  of Participant to Next Level. 
+
+                </span>
+ <br> <br>
+                  <span style="color:darkred">(4)Revoke Nomination : You are updating the current status of this current nominated participant  to Previous/current level.
+                </span>
+
+                <br>
+                <br>
+                 <span style="color:darkred">(5) Ensure that software developer maintanaince; has enable User Nomination Section
+                    <br>This is to ensure that The system has move from Registration to Nomination level 
+                    <br>or to new level and to obay Super admin instructions inorder to avoide system abuse.
+                    <br> This is also applicable to delete user (Contestant).
+                </span>
+                 <br>
+                <br>
+
+                  <span style="color:darkred">(6) Please ensure you have currently set the most current stage <br>
+                    of the program before using this section (Move Now). <br>
+                     You most set admin Nomi.. level so as to be in the current level. <br>
+                     
+                </span>
+
+
+              
+          </h2>
+        <hr>
+
+<h2>Delete This User: enter 12345 to confirm<input id="DeleteUserPasscode" placeholder="enter 12345"> </h2>
+        <hr>
+        <table>
+
+            <h2><u>User Information</u></h2>
+           
+
+            <tr>
+                <td colspan="2" style="color: lightblue; text-align: center;"> <h3>Current Status (Level)  
+                <span id="userCurentStatus" style="color: lightblue;"></span> </h3></td>
+            </tr>
+
+             <tr>
+                <td colspan="2" style="color: lightblue; text-align: center;"> <h3>Previous Status (Level)  
+                <span id="userPreviousStatus" style="color: lightblue;"></span> </h3></td>
+            </tr>
+            <tr>
+                <td>Name <span class="important">*</span>:</td>   
+                <td><input type="text" placeholder="First_Name  LastName   OtherName "  id="name" style="width:300px"  readonly></td>
+            </tr>
+            <tr>
+                <td>Nick Name (Alias):</td>   
+                <td><input type="text" placeholder="Nick Name" id="nickName"  style="width:300px" readonly></td>
+            </tr>
+            
+            <tr>
+                <td>Email<span class="important">*</span>:</td>   
+                <td><input type="email"  id="email" placeholder="Your email" readonly></td>
+            </tr>
+
+             <tr>
+                <td>Date of Birth <span class="important">*</span>:</td>   
+                <td><input type="text"  id="dateOfBirth" readonly></td>
+            </tr>
+            <tr>
+                <td>State of Origin  <span class="important">*</span>:</td>   
+                <td><input type="text" id="stateOfOrigin"  readonly></td>
+
+            </tr>
+
+             <tr>
+                <td>State of Resident <span class="important">*</span>:</td>   
+                <td><input type="text" id="stateOfResident"  readonly></td>
+             </tr>
+            <tr>
+                <td>Residential Address <span class="important">*</span>:</td>   
+                <td><input type="text" placeholder="Residential Address"  id="residentAddress" style="width:300px"  readonly></td>
+            </tr>
+             <tr>
+                <td>(Main) Mobile Number <span class="important">*</span>:</td>   
+                <td><input type="tel" placeholder="Main Tel"   style="width:300px"  id="mainTel" readonly></td>
+            </tr>
+             <tr>
+                <td>(Alt) Mobile Number <span class="important">*</span>:</td>   
+                <td><input type="tel" placeholder="Alternative Tel" id="altTel"  style="width:300px"  readonly></td>
+            </tr>
+            
+            <tr>
+                <td>Highest Quelification:</td>
+                <td><input id="educationQuelification"  readonly></td>
+
+            </tr>
+
+            <tr>
+                <td>Course of study (qualification):</td>
+                <td><input type="text" id="courseOfStudy"  placeholder="higest qualification"></td>
+
+            </tr>
+
+        </table>
+
+
+      
+        <br>
+        <br>
+         <div>
+         <span>Why do you join ThescholarsNG, <br> Your hoobies and What will you do with the found as a winner ?</span>  
+
+           <br>  <br> <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="TheScholarsQuestion"  readonly ></textarea>
+            
+
+
+
+              <div colspan="2" style="color:lightblue"> Passport/Photograph: <br>
+                    <div style="display: flax; flex-direction: row;">
+
+                <img src="" type="file" id="passport1"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport2"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport3"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport4"  placeholder="passport"  width="200px" height="210px"/>
+               <img src="" type="file" id="passport5"  placeholder="passport"  width="200px" height="210px"/>
+
+                    </div>
+                </div>
+    </center>
+    <br>
+    <br>
+
+    <script>
+        var stateOfResident = document.getElementById("stateOfResident");
+        var stateOfOrigin = document.getElementById("stateOfOrigin");
+        var educationQuelification = document.getElementById("educationQuelification");
+
+
+        
+        //stateOfResident.
+        // var val;
+        // Array.from(NigState).forEach((data)=>{
+
+        //     val+= `<option>${data}</option>`;
+        // })
+
+        // stateOfResident.innerHTML = val;
+        // stateOfOrigin.innerHTML = val;
+
+        // var edu;
+        // Array.from(EducationCert).forEach((data)=>{
+
+        //     edu+= `<option>${data}</option>`;
+        // })
+        // educationQuelification.innerHTML = edu;
+
+
+
+    </script>
+
+
+<script type="module" src="./script/participantAppStatusAdmin.js"></script>
+
+<script type="module" src="./script/adminFetchLevelSettings.js"></script>
+
+<script type="module" src="./script/adminNomination/addParticipantToNomination.js"></script>
+
+
+</body>
+</html>

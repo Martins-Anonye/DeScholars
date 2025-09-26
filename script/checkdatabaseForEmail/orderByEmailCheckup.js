@@ -60,7 +60,7 @@ const q = query(myRef, orderByChild('email'), equalTo(email));
 // Execute the query and get data
 get(q).then((snapshot) => {
   if (snapshot.exists()) {
-    console.log(snapshot.val());
+   // console.log(snapshot.val());
     
     return resolve(true);
   } else {

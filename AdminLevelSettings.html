@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .important{
+            color:red;
+            margin: 5px;
+        }
+        body{
+            background-color: darkolivegreen;
+        }
+
+         button{
+          margin:  0px 10px 2px 10px;
+          background-color: lightblue;
+          color: darkblue;
+          padding: 10px;
+        }
+    </style>
+        <script src="../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+
+
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+<script  src="./script/developerMaintainanceSettings.js"></script>
+
+
+      
+</head>
+<body>
+    
+    <center>
+
+        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Home page</button></a>
+     <a href="AdminDashBoard.html"><button>Admin Dashboard</button></a>
+        
+
+       
+        <hr>
+        <h3><u>Active  ADMIN Nomination Settings</u></h3>
+             <table>
+                <tr>
+                    <td>Previous Level :</td>
+                    <td><span id="fpreviousLevel"></span></td>
+                </tr>
+          
+                <tr>
+                   <td>Current Level :</td>
+                    <td><span id="fcurrentLevel"></span></td>
+                </tr>
+
+                <tr>
+                      <td>Next Level :</td>
+                    <td><span id="fnextLevel"></span></td>
+
+                </tr>
+                      
+                <tr>
+                        <td>Next Level Is Last Level ?</td>
+                    <td><span id="fnextLevelIsLast"></span></td>
+                </tr>
+
+                <tr>
+                    <td>Timestamp of last update:</td>
+                    <td>
+                        <input type="text" id="timestamp" readonly/>
+                    </td>
+                </tr>
+             </table>
+                   
+       <hr>
+
+      
+
+       <span><u>ADMIN LEVEL SETTINGS For  Nomination:</u></span>
+
+        <h3>Previous Level &nbsp; &nbsp;  
+            <select id="spreviousLevel">
+                <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            </select></h3>
+
+          <h3>Current Level &nbsp; &nbsp;  
+            <select id="scurrentLevel">
+                <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            </select></h3>
+           <h3>Next Level &nbsp; &nbsp; 
+
+             <select id="snextLevel"><option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+
+            </select>
+           </h3>
+           <h3>Is the next level the Last Level of competition &nbsp; &nbsp; 
+
+             <select id="snextLevelIslastLevel"><option>no</option>
+            <option>yes</option>
+
+            </select>
+           </h3>
+          <span>Super admin Password: </span> <input type="number" placeholder="default is 12345 to save level" id="approadEntery12345"/>
+           <button id="adminSettingsBtn">Save Settings</button>
+
+           <h4 style="color:aqua">Note: password set is to avoid system abuse from multiple admin, 
+            <br> and to obay instruction: Contact Developer to aprove the system based on 
+            <br>super admin (owner) instruction.</h4>
+             <hr>
+
+
+       <br>
+    <br>
+
+    <script>
+        var stateOfResident = document.getElementById("stateOfResident");
+        var stateOfOrigin = document.getElementById("stateOfOrigin");
+        var educationQuelification = document.getElementById("educationQuelification");
+
+
+        
+        //stateOfResident.
+        // var val;
+        // Array.from(NigState).forEach((data)=>{
+
+        //     val+= `<option>${data}</option>`;
+        // })
+
+        // stateOfResident.innerHTML = val;
+        // stateOfOrigin.innerHTML = val;
+
+        // var edu;
+        // Array.from(EducationCert).forEach((data)=>{
+
+        //     edu+= `<option>${data}</option>`;
+        // })
+        // educationQuelification.innerHTML = edu;
+
+
+
+    </script>
+
+
+<script type="module" src="./script/adminLevelSetting.js"></script>
+
+<script type="module" src="./script/adminFetchLevelSettings.js"></script>
+
+
+</body>
+</html>
