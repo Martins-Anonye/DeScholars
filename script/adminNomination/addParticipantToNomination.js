@@ -31,7 +31,25 @@ errorUnit.innerText="";
 
             if(doesUserDataExist != false){
             
-                 if(LevelSelection.value=="1"){
+
+                 if(LevelSelection.value =="0" ){
+
+                       var doesEmailExistInNorminationList =  await checkEmailUserAccountData("NominationList",searchEmail.value);
+
+                            if(doesEmailExistInNorminationList != false){
+                                var pushId =  doesEmailExistInNorminationList.pushId;
+                                   deleteUserFromNominatedList(pushId).then(e=>{
+                                        alert(e);
+                                   }).catch(e=>{
+                                        alert(e);
+                                    });
+                            }else{
+
+                                errorUnit.innerText=`User account does not exist in the nomination list.`;
+        
+                            }
+                    }
+                else if(LevelSelection.value=="1"){
 
                      var doesEmailExistInNorminationList =  await checkEmailUserAccountData("NominationList",searchEmail.value);
 
@@ -58,25 +76,26 @@ errorUnit.innerText="";
                     var doesEmailExistInNorminationList =  await checkEmailUserAccountData("NominationList",searchEmail.value);
 
 
-                    if(doesEmailExistInNorminationList != false){
+                            if(doesEmailExistInNorminationList != false){
 
-                             var pushId =  doesEmailExistInNorminationList.pushId;
+                                    var pushId =  doesEmailExistInNorminationList.pushId;
 
-                           // alert(pushId);
-                            updateParticipantToNominationlistFirebase(LevelSelection.value,pushId).then(e=>{
-                               alert(e);
-                            }).catch(e=>{
-                               alert(e);
+                                // alert(pushId);
+                                    updateParticipantToNominationlistFirebase(LevelSelection.value,pushId).then(e=>{
+                                    alert(e);
+                                    }).catch(e=>{
+                                    alert(e);
 
-                            });
-                    }else{
+                                    });
+                            }else{
 
-                        errorUnit.innerText=`User account does not exist in the nomination list.`;
-  
-                    }
+                                errorUnit.innerText=`User account does not exist in the nomination list.`;
+        
+                            }
                         
 
                     }
+                   
             }
             else{
             
@@ -148,30 +167,29 @@ const pushId = newPostRef.key;
 
     var domainVoteURL = maintainanceSetting.domainLink+"?voteLink=yes&pushId="+pushId+"&timestamp="+timestamp+"&email="+email;
 
-set(newPostRef,
-          {
-            email:email,
-              currentLevel :1,
-              pushId:pushId , 
-              timestamp:timestamp,
-              userAccountProfileUrl:profileUrl,
-              vote:0,
-              voteLink: domainVoteURL     
-          }
-         
-      ) .then(() => {
-        var info  = "Data written successfully!";
-       // console.log(info);
-        // alert(info);
-        return resolve(info);
-    })
-    .catch((error) => {
+        set(newPostRef,
+                {
+                    email:email,
+                    currentLevel :1,
+                    pushId:pushId , 
+                    timestamp:timestamp,
+                    userAccountProfileUrl:profileUrl,
+                    vote:0,
+                    voteLink: domainVoteURL     
+                }
+                
+            ) .then(() => {
+                var info  = "Data written successfully!";
+            // console.log(info);
+                // alert(info);
+                return resolve(info);
+            }).catch((error) => {
 
-        var info  = "Error writing data: "+error;
-        console.log(info);
+                var info  = "Error writing data: "+error;
+                console.log(info);
 
-        return reject(info);
-    });
+                return reject(info);
+            });
 
 
 
@@ -283,4 +301,43 @@ set(dataRef, currentLevel) .then(() => {
     return promise;
 
 }
+
+
+function deleteUserFromNominatedList(pushID){
+
+    
+
+    var promise  = new Promise((resolve,reject)=>{
+
+
+   
+    
+const database = getDatabase(app);
+const dataRef = ref(database, 'NominationList/'+pushID);
+
+set(dataRef, null) .then(() => {
+        var info  = "Data Deleted successfully!";
+       // console.log(info);
+        // alert(info);
+        return resolve(info);
+    })
+    .catch((error) => {
+
+        var info  = "Error writing data: "+error;
+        console.log(info);
+
+        return reject(info);
+    });
+
+
+
+    });
+
+
+    return promise;
+
+}
+
+
+
 

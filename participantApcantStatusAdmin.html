@@ -47,7 +47,12 @@
        
           <a href="AdminDashBoard.html"><button> Admin Dashboard </button> </a>
 
-        <h1><u>The Scholars Season 1: Audition</u></h1>
+        <h1><u>The Scholars Season
+             <script>
+              document.write(maintainanceSetting.season);
+
+            </script>
+            : Audition</u></h1>
        <hr>
         <h2><input type="text" placeholder="Enter email"  id="searchEmail"> 
             <button id="checkStatus">Check</button>
@@ -160,8 +165,8 @@
             </tr>
 
              <tr>
-                <td colspan="2" style="color: lightblue; text-align: center;"> <h3>Previous Status (Level)  
-                <span id="userPreviousStatus" style="color: lightblue;"></span> </h3></td>
+                <td colspan="2" style="color: lightblue; text-align: center;"> <h3>Number of vote  
+                <span id="numberOfVote" style="color: lightblue;"></span> </h3></td>
             </tr>
             <tr>
                 <td>Name <span class="important">*</span>:</td>   
@@ -223,7 +228,7 @@
         <br>
         <br>
          <div>
-         <span>Why do you join ThescholarsNG, <br> Your hoobies and What will you do with the found as a winner ?</span>  
+         <span>Why do you join The scholars, <br> Your hoobies and What will you do with the found as a winner ?</span>  
 
            <br>  <br> <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="TheScholarsQuestion"  readonly ></textarea>
             

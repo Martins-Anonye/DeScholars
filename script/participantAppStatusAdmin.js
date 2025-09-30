@@ -74,14 +74,14 @@ var courseOfStudy = userData.courseOfStudy;
  document.getElementById("courseOfStudy").value =courseOfStudy;
 
  var passport = userData.passport;
-  document.getElementById("passport").src =passport;
+  document.getElementById("passport1").src =passport;
 
        
 
 
    
-
-    // });
+  
+getUserLevelStatus();
 
      }//end of if
 
@@ -91,3 +91,30 @@ var courseOfStudy = userData.courseOfStudy;
 
 
 });// end of event listener
+
+
+
+
+async function getUserLevelStatus(){
+
+        try {
+           
+          var nominationList =   await checkEmailUserAccountData("NominationList",searchEmail.value);
+          if(nominationList != false){
+            var currentlevel  = nominationList.currentLevel;
+            var nominationlist = nominationList.vote;
+            document.getElementById("userCurentStatus").innerText =currentlevel;
+            document.getElementById("numberOfVote").innerText = nominationlist;
+          }
+          
+        
+        }
+        catch(e){
+          alert(e);
+        }
+              
+
+
+           
+
+}

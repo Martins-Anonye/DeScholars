@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contestant Form</title>
+    <style>
+ #div1{
+    width: 300px;
+    height:210px;
+    border-width: 5px;
+    border-radius: 5px;
+ }
+
+
+ #cardcon{
+   display: flex;
+   width:100%;
+   height: auto;
+ }
+ .card{
+   width: 200px;
+   height: 300px;
+ }
+
+
+ #gallaryDisplayShow{
+  width:100%;
+  height: 100%;
+  display: flex;
+  background-color: azure;
+  position: absolute;
+  top:10px;
+  left: 0px;
+  visibility: hidden;
+ }
+
+
+ #gallaryDisplayShow img{
+  width:300px;
+  height: 320px;
+ }
+
+ #gallaryShow{
+  width:100%;
+  height: auto;
+  margin-top: 20px;
+ }
+
+button{
+      margin:  0px 10px 2px 10px;
+      background-color: lightblue;
+      color: darkblue;
+      padding: 10px;
+
+    }
+  button:hover{
+    margin:  0px 10px 2px 10px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+  }
+  #closeGallary{
+    width:80px;
+    height: 40px;
+  }
+
+
+
+    </style>
+            <script src="MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+<script  src="./script/developerMaintainanceSettings.js"></script>
+
+</head>
+<body>
+
+   <img src="images/logoscholarsgod.png" width="50px" height="80px"> <a href="index.html"><button>Home page</button></a>
+       
+          <a href="AdminDashBoard.html"><button> Admin Dashboard </button> </a>
+
+        <h1><u>The Scholars Season 
+          <script>
+            document.write(maintainanceSetting.season);
+
+        </script>: Participant List</u></h1>
+       
+
+ <div id="cardcon">
+    
+
+
+
+
+
+   </div>
+
+
+
+   <div id="gallaryDisplayShow" >
+
+    <button id="closeGallary">close</button>
+
+    <div id="gallaryShow" >
+
+    </div>
+   </div>
+
+<script>
+  var closeGallary = document.getElementById("closeGallary");
+  closeGallary.addEventListener("click",e=>{
+
+         var gallaryDisplayShow = document.getElementById("gallaryDisplayShow");
+         gallaryDisplayShow.style.visibility ="hidden";
+  })
+</script>
+
+<script type="module" src="./script/participantList.js"></script>
+
+</body>
+</html>
