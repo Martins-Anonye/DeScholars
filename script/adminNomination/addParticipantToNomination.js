@@ -4,7 +4,6 @@
 import{initializeApp} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"; 
 import {getDatabase, ref, onValue, set, get,child,update,remove,push} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-import {checkEmailUserAccountExist} from "../checkdatabaseForEmail/orderByEmailCheckup.js"
 import {checkEmailUserAccountData} from "../checkdatabaseForEmail/orderByEmailCheckupUserData.js"
 
 
@@ -18,6 +17,8 @@ const db = getDatabase(app);
 var searchEmail = document.getElementById("searchEmail");
 var LevelSelection = document.getElementById("LevelSelection");
 var errorUnit =  document.getElementById("errorUnit");
+
+var checkStatus = document.getElementById("checkStatus");
 
 var movenow = document.getElementById("movenow");
 
@@ -39,6 +40,7 @@ errorUnit.innerText="";
                             if(doesEmailExistInNorminationList != false){
                                 var pushId =  doesEmailExistInNorminationList.pushId;
                                    deleteUserFromNominatedList(pushId).then(e=>{
+                                     checkStatus.click();// we recheck for update
                                         alert(e);
                                    }).catch(e=>{
                                         alert(e);
@@ -53,10 +55,14 @@ errorUnit.innerText="";
 
                      var doesEmailExistInNorminationList =  await checkEmailUserAccountData("NominationList",searchEmail.value);
 
-                     var passport = doesUserDataExist.passport;
+                     var passport = doesUserDataExist.passporturl1;
+                     var NameAndNickName =  doesUserDataExist.name+"/"+ doesUserDataExist.nickName;
+                     var participantUrlLinkForVoteCopy =  doesUserDataExist.participantUrlLink;
+                     var votelikes = doesUserDataExist.likes;
                      if(doesEmailExistInNorminationList == false){
-                          addParticipantToNominationlistFirebase(passport).then(e=>{
-                            alert(e)
+                          addParticipantToNominationlistFirebase(passport,NameAndNickName,votelikes,participantUrlLinkForVoteCopy).then(e=>{
+                             checkStatus.click();// we recheck for update
+                            alert(e);
                             }).catch(e=>{
                             alert(e)
 
@@ -82,7 +88,8 @@ errorUnit.innerText="";
 
                                 // alert(pushId);
                                     updateParticipantToNominationlistFirebase(LevelSelection.value,pushId).then(e=>{
-                                    alert(e);
+                                     checkStatus.click();// we recheck for update
+                                        alert(e);
                                     }).catch(e=>{
                                     alert(e);
 
@@ -120,7 +127,7 @@ errorUnit.innerText="";
 
 
 
-function addParticipantToNominationlistFirebase(profileUrl){
+function addParticipantToNominationlistFirebase(profileUrlPics,NameAndNickName,votelikes,participantUrlLinkForVoteCopy){
 
 //var fpreviousLevel = document.getElementById("fpreviousLevel");
 // var fcurrentLevel =  document.getElementById("fcurrentLevel");
@@ -134,7 +141,6 @@ function addParticipantToNominationlistFirebase(profileUrl){
 
 
         
-    var timestamp = Date.now();
 
 
 
@@ -162,19 +168,27 @@ const newPostRef = push(dataRef);
 
 // Get the unique push ID (the key) from the new reference
 const pushId = newPostRef.key;
-    var timestamp = Date.now();
+  
+// candidate id formation
+     var timestamp = Date.now();
+    var date =  new Date(timestamp);
+        var candidateID  = maintainanceSetting.year+maintainanceSetting.season+date.getMonth()+date.getDay()+date.getSeconds();
+          
 
 
-    var domainVoteURL = maintainanceSetting.domainLink+"?voteLink=yes&pushId="+pushId+"&timestamp="+timestamp+"&email="+email;
+    var domainVoteURL = maintainanceSetting.domainLink+"?voteLink=yes&pushId="+pushId+"&candidateID="+candidateID;
 
         set(newPostRef,
                 {
+                    nameAndNickName:NameAndNickName,
                     email:email,
                     currentLevel :1,
-                    pushId:pushId , 
-                    timestamp:timestamp,
-                    userAccountProfileUrl:profileUrl,
+                    pushId:pushId, 
+                    candidateID:candidateID,
+                    userAccountProfilePicsUrl:profileUrlPics,
                     vote:0,
+                    participantUrlLinkForVoteCopy:participantUrlLinkForVoteCopy,
+                    votelikes:votelikes,
                     voteLink: domainVoteURL     
                 }
                 

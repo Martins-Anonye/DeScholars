@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #825cff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  background-color: white;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+header p {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.voting-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.candidate-card {
+  background-color: #f1f2f6;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.candidate-card img:not(.like,.comment,.share,.infor,.voteResult) {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  max-width: 200px;
+  max-height: 200px;
+}
+.comment,.share{
+  position: relative;
+  top:2px;
+  width:20px;
+  height: 20px;
+}
+
+.like:hover,.comment:hover,.share:hover,.infor:hover{
+   width:25px;
+   height: 25px;
+
+}
+
+.infor,.voteResult,.like{
+  width:20px;
+  height: 20px;
+ 
+}
+.voteResult{
+  vertical-align: middle;
+}
+
+.infor{
+  float:left;
+  position: absolute;
+  left: 1px;
+}
+
+.like{
+  position: absolute;
+  left:10px
+
+}
+.voteResultdiv{
+  float:right;
+  width: 50px;
+  height: auto;
+  background-color: aqua;
+
+}
+
+.likeResultdiv{
+  width: 100px;
+  height: auto;
+  display: inline-block;
+  position:relative;
+  text-align: center;
+}
+.topdivFloatInCard{
+  position: absolute;
+  top:5px;
+  width:100%;
+  height: 50px;
+  padding-left: 0px;
+  padding-right: 25px;
+  text-align: center;
+}
+
+.candidate-card h2 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+.candidate-card button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.candidate-card button:hover {
+  background-color: #3498db;
+}
+
+.candidate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #3498db;
+}
+
+
+@media (max-width: 768px) {
+  .voting-section {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .candidate-card {
+      width: 80%;
+      margin-bottom: 20px;
+  }
+}

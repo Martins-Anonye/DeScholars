@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    input{
+        margin: 10px;
+        padding: 10px;
+        width: 300px;
+        
+    }
+
+    body{
+        background-color: darkolivegreen;
+        padding-top: 50px;
+        display:flex;
+        flex-direction: row;
+    }
+.card{
+    width: 50%;
+    height: auto;
+}
+
+    button{
+        background-color: aqua;
+        font-size: 16px;
+        color:blue;
+        padding: 10px;
+    }
+
+    #amounth,#description{
+        color:blue
+    }
+        </style>
+            <!-- <script src="https://sdk.monify.com/v1.0.0/monify.min.js"></script> -->
+            <script src="../../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://sdk.monnify.com/plugin/monnify.js">
+    </script>
+
+
+</head>
+
+
+<body>
+    
+    <div  class="card">
+        <img src="../../images/atmcard.png" width="80%" height="80%">
+
+    </div>
+    <div class="card">
+    <center>
+        <div>
+             <a href="../../index.html"><button>Home</button></a>
+            <form>
+            
+                <h2>
+                    Enter the  your detail to continue payment
+                </h2>
+                <span id="error" style="color:red"> </span> <br>
+
+                <input  type="email"  placeholder="enter email" id="email" required> <br>
+                <input type="email"    placeholder="confirm email"  id="emailConfirm" required><br>
+
+                <input type="text"  placeholder="enter name" id="customName" required> <br>
+
+
+
+                <hr>
+                <h4> Amount:   <span id="amount">33333</span></h4>
+
+                <span>Description</span> 
+                
+                <h4 id="title" style="color:white"></h4> 
+
+                <span id="description"  style="color:white"></span> <br>
+
+                <hr>
+                <button type="submit" id="submit">Start payment</button>
+             </form>
+        </div>
+        
+    </center>
+    </div>
+</body>
+
+      <script type="module" src="monnifyApi.js"></script>
+
+<script>
+
+var email  = document.getElementById("email");
+var emailConfirm =  document.getElementById("emailConfirm");
+   
+
+        
+var params = new URLSearchParams(location.search);
+  var title = params.get("title");
+  var subtitle = params.get("subtitle");
+  var price =  params.get("price");
+var quantity   =  params.get("quantity");
+
+var titleSpan = document.getElementById("title");
+var description = document.getElementById("description");
+var amount =  document.getElementById("amount");
+amount.innerText =price;
+description.innerText = subtitle+".  (Size = "+quantity+")";
+titleSpan.innerText = title;
+
+</script>
+
+
+</html>

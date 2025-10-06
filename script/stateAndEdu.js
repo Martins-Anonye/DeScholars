@@ -1,5 +1,4 @@
 
-var season = "2025";
 var NigState=[
     "Ebonyi",
     "Enugu",

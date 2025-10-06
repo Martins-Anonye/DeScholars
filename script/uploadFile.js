@@ -5,7 +5,7 @@ firebase.initializeApp(configuration());
             const storage = firebase.storage();
 
 
-  function uploader(fileInputId,progresscounter,seasonTitle){
+  function uploader(fileInputId,progresscounter,year,seasonTitle,fileNumber){
 
 
     var Mypromise = new Promise((resolve,rejected)=>{
@@ -18,9 +18,11 @@ firebase.initializeApp(configuration());
         const fileInput = document.getElementById(fileInputId);
                 const file = fileInput.files[0];
 
+                var date = new Date();
+                var mdate = date.getFullYear()+"_"+date.getMonth()+"_"+date.getDay();
                 if (file) {
                     // Create a storage reference
-                    const storageRef = storage.ref('TheScholarsNG/'+seasonTitle+"/"+file.name);
+                    const storageRef = storage.ref('TheScholarsNG/'+year+"/"+seasonTitle+"/"+mdate+"/"+file.name);
 
                     // Upload the file
                     const uploadTask = storageRef.put(file);
@@ -32,12 +34,12 @@ firebase.initializeApp(configuration());
                             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                             var upld ='Upload is ' + progress + '% done';
                             console.log(upld);
-                            progresscounterRst.innerText= upld;
+                            progresscounterRst.innerText= upld+" : At file number = "+fileNumber;
                         },
                         (error) => {
                             // Handle unsuccessful uploads
                             console.error("Upload failed:", error);
-                            return rejected("Upload failed: "+error);
+                            return rejected("Upload failed  AT File Number : "+fileNumber+". Error:"+error);
                         },
                         () => {
                             // Handle successful uploads on complete
@@ -51,7 +53,7 @@ firebase.initializeApp(configuration());
                 } else {
                     //console.log("No file selected.");
 
-                 return rejected("No file selected ");
+                 return rejected("No file selected At file number: "+fileNumber);
 
                 }
 

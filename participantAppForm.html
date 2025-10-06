@@ -11,9 +11,12 @@
         }
         body{
             background-color: darkolivegreen;
+           
         }
     </style>
     <script src="script/stateAndEdu.js"></script>
+    <script  src="./script/developerMaintainanceSettings.js"></script>
+
         <script src="MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
 
 
@@ -75,15 +78,38 @@
                 <td>Date of Birth <span class="important">*</span>:</td>   
                 <td><input type="date"  id="dateOfBirth" required></td>
             </tr>
-            <tr>
+            <tr style="display: none;">
                 <td>State of Origin  <span class="important">*</span>:</td>   
-                <td><select id="stateOfOrigin"  required></select></td>
+                <td><select id="stateOfOrigin"></select></td>
 
             </tr>
 
              <tr>
                 <td>State of Resident <span class="important">*</span>:</td>   
                 <td><select id="stateOfResident"  required></select></td>
+             </tr>
+               <tr>
+                <td>Where do u hear about us: <span class="important">*</span>:</td>   
+                <td><select id="hearUsFrom"  required> 
+                    <option>
+                        Google
+                    </option>
+                     <option>
+                        Internet Advert
+                    </option>
+                    <option>
+                        Friend
+                    </option>
+                    <option>
+                        Facebook
+                    </option>
+                    <option>
+                        News papper
+                    </option>
+                    <option>
+                        TV Show
+                    </option>
+                </select></td>
              </tr>
             <tr>
                 <td>Residential Address <span class="important">*</span>:</td>   
@@ -117,7 +143,29 @@
 
             </tr>
 
-            
+             <tr>
+                <td>Photo 2:</td>
+                <td><input type="file" id="passport2"  placeholder="photo"></td>
+
+            </tr>
+
+             <tr>
+                <td>Photo 3:</td>
+                <td><input type="file" id="passport3"  placeholder="photo"></td>
+
+            </tr>
+             <tr>
+                <td>Photo 4:</td>
+                <td><input type="file" id="passport4"  placeholder="photo"></td>
+
+            </tr>
+
+
+             <tr>
+                <td>Photo 5:</td>
+                <td><input type="file" id="passport5"  placeholder="photo"></td>
+
+            </tr>
 
         </table>
 
@@ -128,16 +176,16 @@
         <br>
         <br>
          <div>
-         <span>Why do you join ThescholarsNG, <br> Your hoobies and What will you do with the found as a winner  <span class="important">*</span>?</span>  
+         <span>Why join The scholars , <br> Your hoobies and What will you do with the found as a winner  <span class="important">*</span>?</span>  
 
-           <br> <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="TheScholarsQuestion"  readonly ></textarea>
+           <br> <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="TheScholarsQuestion"  ></textarea>
             
 
 
 
            <table>
              <tr>
-                <td  colspan="2" style="color:blue; text-align: center;">
+                <td  colspan="2" style="color:lightblue; text-align: center;">
                     <br>
                     Crosscheck before submitting</td>
 
@@ -154,7 +202,7 @@
             <tr>
                 <td colspan="2" style="color:red; text-align: center;">
                     <br>
-                 <button id="submit"> Submit </button>   &nbsp; &nbsp; <span id="progresscounter" style="color:blue"></span> </td>
+                 <button id="submit"> Submit </button>   &nbsp; &nbsp; <span id="progresscounter" style="color:lightblue"></span> </td>
 
             </tr>
            </table>

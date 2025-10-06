@@ -8,8 +8,10 @@ checkStatus.addEventListener("click",e=>{
 
     var searchEmail = document.getElementById("searchEmail");
 
-    if(searchEmail.value != null){
+    if(searchEmail.value == null || searchEmail.value == 'undefined'){
 
+      alert("Email is Empty");
+      return false;
 
 
     }
@@ -47,11 +49,14 @@ var nickName = userData.nickName;
 var email = userData.email;
  document.getElementById("email").value =email;
 
-var dateOfBirth = userData.stateOfOrigin;
+var dateOfBirth = userData.dateOfBirth;
  document.getElementById("dateOfBirth").value =dateOfBirth;
 
 var stateOfOrigin = userData.stateOfOrigin;
- document.getElementById("stateOfOrigin").value =stateOfOrigin;
+ //document.getElementById("stateOfOrigin").value =stateOfOrigin;
+
+var hearUsFrom = userData.hearUsFrom;
+ document.getElementById("hearUsFrom").innerText =hearUsFrom;
 
 var  stateOfResident = userData.stateOfResident;
  document.getElementById("stateOfResident").value =stateOfResident;
@@ -73,10 +78,28 @@ var educationQuelification = userData.educationQuelification;
 var courseOfStudy = userData.courseOfStudy;
  document.getElementById("courseOfStudy").value =courseOfStudy;
 
- var passport = userData.passport;
-  document.getElementById("passport1").src =passport;
+ //var passport = userData.passport;
+  //document.getElementById("passport1").src =passport;
 
        
+   var passporturl1 = userData.passporturl1;
+     document.getElementById("passport1").src =passporturl1;
+
+          var passporturl2 = userData.passporturl2;
+            document.getElementById("passport2").src =passporturl2;
+
+          var passporturl3 = userData.passporturl3;
+            document.getElementById("passport3").src =passporturl3;
+
+          var passporturl4 = userData.passporturl4;
+  document.getElementById("passport4").src =passporturl4;
+
+          var passporturl5 = userData.passporturl5;
+
+  document.getElementById("passport5").src =passporturl5;
+
+
+
 
 
    
@@ -106,7 +129,10 @@ async function getUserLevelStatus(){
             document.getElementById("userCurentStatus").innerText =currentlevel;
             document.getElementById("numberOfVote").innerText = nominationlist;
           }
-          
+          else{
+           document.getElementById("nominationReport").style.display ="table-row" ;
+
+          }
         
         }
         catch(e){
@@ -116,5 +142,27 @@ async function getUserLevelStatus(){
 
 
            
+
+}
+
+
+emailSearchFromList();
+function emailSearchFromList(){
+
+
+  const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email');
+    var searchEmail = document.getElementById("searchEmail");
+ searchEmail.value = email;
+  if(searchEmail.value == null || searchEmail.value == 'undefined'){
+
+      
+      return false;
+
+
+    }
+
+
+ checkStatus.click();
 
 }

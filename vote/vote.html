@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting App</title>
+    <link rel="stylesheet" href="votestyles.css">
+
+
+
+    <style>
+        
+ #gallaryDisplayShow{
+  width:100%;
+  height: 100%;
+  background-color: aquamarine;
+  position: absolute;
+  top:10px;
+  left: 0px;
+  padding: 20px;
+  visibility: hidden;
+ }
+
+
+ #gallaryShow img{
+  width:300px;
+  height: 320px;
+  
+ }
+
+ #gallaryShow{
+  width:95%;
+  height:70%;
+  margin: 50px 30px 5px 10px ;
+
+  background-color: burlywood;
+  display: flex;
+  flex-direction: row;
+  
+  overflow: scroll;
+ }
+  #closeGallary{
+    width:80px;
+    height: 30px;
+    margin-top: 10px;
+  }
+
+  .card{
+   width: 200px;
+   height: 300px;
+ }
+.mathsigns{
+  padding: 0px 5px;
+  background-color: darkblue;
+  font-size: medium;
+  text-align: center;
+  color: white;
+  height: 5px;
+  cursor: pointer;
+  }
+  .noselectForSpanAsButton {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+<script  src="../script/developerMaintainanceSettings.js"></script>
+
+</head>
+<body>
+
+   
+ <div class="app-wrapper">
+      <span>The Scholars Season
+        <script>
+        document.write(maintainanceSetting.season +" @ Year : "+maintainanceSetting.year);
+      </script>
+      </span>
+  <a href="../index.html"><button>Home</button></a>  
+       <h3> VOTERS DASHBOARD</h3>
+  </div>
+          
+    <div class="app-wrapper">
+
+      
+        <header>
+         
+            
+           
+             <h3>Vote for Your Candidate</h3>
+             <p>Cast your vote and watch the live results!  &nbsp; &nbsp; <button id="viewAll">view all</button></p>
+          <h4> Search Contestant by:<select id="searchContestantBy">
+              <option value="1">candidateID</option> 
+              <option value="2">Email</option></select>
+              <input type="text" placeholder="Enter Contestant  email or ID"  id="searchContestantEmailID"> 
+              
+              <button id="searchContestantBTN">search</button> <br>
+
+              <span id="errorUnit" style="color:red"></span>
+         </h4>
+ 
+        <hr>
+        
+        </header>
+
+        <main class="voting-section"   id="cardConMain">
+           
+           
+           
+        </main>
+
+        
+    </div>
+
+
+
+    <!--    gallary-->
+
+      <div id="gallaryDisplayShow" >
+
+        <button id="closeGallary">close</button> <br> <br>
+
+    
+        <div id="gallaryShow" >
+
+        </div>
+        </div>
+
+
+
+      <!---Vote Cast Price----->  
+
+
+      
+
+
+        
+<script>
+    var closeGallary = document.getElementById("closeGallary");
+    closeGallary.addEventListener("click",e=>{
+  
+           var gallaryDisplayShow = document.getElementById("gallaryDisplayShow");
+           gallaryDisplayShow.style.visibility ="hidden";
+    })
+
+
+
+
+
+    emailSearchFromList();
+function emailSearchFromList(){
+
+
+
+  const urlParams = new URLSearchParams(window.location.search);
+    const candidateID = urlParams.get('candidateID');
+    var searchContestantEmailID = document.getElementById("searchContestantEmailID");
+    searchContestantEmailID.value = candidateID;
+  if(searchContestantEmailID.value == null || searchContestantEmailID.value == 'undefined'){
+
+      
+      return false;
+
+
+    }
+
+    var searchContestantBy  = document.getElementById("searchContestantBy");
+    
+    if(searchContestantBy.value == "1"){
+      var searchContestantBTN  =  document.getElementById("searchContestantBTN");
+    searchContestantBTN.click();
+    }
+   
+
+}
+  
+</script>
+
+
+  <script src="makePayment/productMakerCalculator.js"></script>
+  
+
+    <script type="module" src="voteList.js"></script>
+</body>
+</html>

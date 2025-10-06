@@ -57,6 +57,51 @@ return  promise;
 }
 
 
-export{ checkEmailUserAccountData}
+
+
+
+
+
+function checkCandidateNominationAccountData(dbRootFolder, candidateID){
+
+  const myRef = ref(db, dbRootFolder );
+
+  var promise = new Promise((resolve, reject )=>{
+
+
+ 
+  // Build the query
+const q = query(myRef, orderByChild('candidateID'), equalTo(candidateID));
+
+var objData = {};
+// Execute the query and get data
+get(q).then((snapshot) => {
+if (snapshot.exists()) {
+
+      snapshot.forEach(function(childSnapshot) {
+        console.log(childSnapshot.val());
+       // objData[childSnapshot.key] =   ;
+
+        return resolve(childSnapshot.val());
+
+        })
+         
+} else {
+  return resolve(false);
+  }
+}).catch((error) => {
+console.error(error);
+
+return reject(error);
+});
+
+
+});
+
+return  promise;
+
+}
+
+export{ checkEmailUserAccountData,checkCandidateNominationAccountData};
 
 

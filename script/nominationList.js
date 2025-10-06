@@ -3,6 +3,7 @@
 import{initializeApp} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"; 
 import {getDatabase, ref, onValue, set, get,child,update,remove,push,query, orderByChild,equalTo} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
+import {checkEmailUserAccountData} from "./checkdatabaseForEmail/orderByEmailCheckupUserData.js"
 
 
 
@@ -28,7 +29,7 @@ getListOfApplicant().then(e=>{
 
 function getListOfApplicant(){
 
-    const myRef = ref(db, 'UserParticipantForm');
+    const myRef = ref(db, 'NominationList');
 
     var promise = new Promise((resplve, reject )=>{
 
@@ -41,33 +42,25 @@ function getListOfApplicant(){
     snapshot.forEach(function(userDat, indexCount) {
       var userData = userDat.val();
 
-          var name = userData.name;
-          var nickName = userData.nickName;
+
+ 
+                  //  voteLink: domainVoteURL     
+
 
           var email = userData.email;
+          var currentLevel = userData.currentLevel;
 
-          var dateOfBirth = userData.dateOfBirth;
 
-          var stateOfOrigin = userData.stateOfOrigin;
+          var timestamp = userData.timestamp;
+          var date =  new Date(timestamp);
+                var mdate = date.getFullYear()+"_"+date.getMonth()+"_"+date.getDay();
 
-          var  stateOfResident = userData.stateOfResident;
+          var userAccountProfilePicsUrl = userData.userAccountProfilePicsUrl;
 
-          var residentAddress =userData.residentAddress;
-          var mainTel = userData.mainTel;
+          var vote = userData.vote;
+          var votelikes = userData.votelikes;
 
-          var altTel = userData.altTel;
-
-          var TheScholarsQuestion = userData.TheScholarsQuestion;
-
-          var educationQuelification = userData.educationQuelification;
-
-          var courseOfStudy = userData.courseOfStudy;
-
-          var passport = userData.passport;
-
-          var photo1 =  "userData.photo1";
-          var photo2 = "userData.photo2";
-          var photo3 = "userData.photo3";
+         var  candidatID = userData.candidateID;
                       
                 
              data += `
@@ -76,27 +69,37 @@ function getListOfApplicant(){
 
                    <table style="width:300px">
             <div id="div1">
-               <img src="" width="100%"; height="100%";>
+               <img src="${userAccountProfilePicsUrl}" width="100%"; height="100%";>
             </div>
             <br>
             <tr>
               <td>
                   <label>
-                    Full Name:
+                    Email
                   </label>
               </td>
               <td>
-                <span>${name} </span>
+                <span>${email} </span>
               </td>
             </tr>
 
-            <tr>
+            <tr style="color:blue">
+              <td>
+                  <label>
+                  candidate ID
+                  </label>
+              </td>
+              <td>
+                <span>${candidatID} </span>
+              </td>
+            </tr>
+            <tr style="color:blue">
             <td>
-                <label>Date of Birth:</label>
+                <label>current Level</label>
             </td>
 
             <td>
-               <span>${dateOfBirth}</span>
+               <span>${currentLevel}</span>
             </td>
             </tr>
             
@@ -104,24 +107,34 @@ function getListOfApplicant(){
 
               <tr>
             <td>
-                <label>Tel:</label>
+                <label>First Time Added</label>
             </td>
 
             <td>
-               <span>${mainTel}</span>
+               <span>${mdate}</span>
             </td>
             </tr>
             
 
 
 
-               <tr>
+               <tr style="color:blue">
             <td>
-               <label>Email:</label>
+               <label>vote:</label>
             </td>
 
             <td>
-             <span>${email}</span>
+             <span>${vote}</span>
+            </td>
+            </tr>
+             
+            <tr style="color:blue">
+            <td>
+               <label>Likes On Vote Level:</label>
+            </td>
+
+            <td>
+             <span>${votelikes}</span>
             </td>
             </tr>
              
@@ -130,12 +143,9 @@ function getListOfApplicant(){
             <td colspan="2">
               <h3> Manage Applicant </h3> <br>
 
-             <button>Manage</button> &nbsp;&nbsp;
-            <a href=" "  >  
-              <button   id="inforBTN${indexCount}"
-                ${moreInfor("inforBTN"+indexCount,passport, photo1, photo2, photo3)};
-              >More Info</button>   
-            </a> 
+             <a href="participantApcantStatusAdmin.html?email=${email}"><button>Manage</button> </a> &nbsp;&nbsp;
+              <button id="inforBTN${indexCount}" ${moreInfor("inforBTN"+indexCount,email)}>More Info</button>   
+        
 
 
             </td>
@@ -190,7 +200,7 @@ return promise;
 
 
 
-function moreInfor(idData,  image1, image2, image3, image4){
+function moreInfor(idData, email){
 
 document.addEventListener(SpecialLoader, e=>{
 
@@ -200,23 +210,149 @@ document.addEventListener(SpecialLoader, e=>{
 
           btn.addEventListener("click", e=>{
 
-            e.preventDefault();
-            var gallaryShow =  document.getElementById("gallaryShow");
 
-              var images = `<img src="${image1}" width="200px"  height="150px"  /> &nbsp &nbsp 
-              <img src="${image2}" width="200px"  height="150px"   /> &nbsp &nbsp 
+            e.preventDefault();
+
+
+ var gallaryDisplayShow =  document.getElementById("gallaryDisplayShow");
+
+            var gallaryShow =  document.getElementById("gallaryShow");
+                        (async()=>{
+
+
+  
+            var userData =   await checkEmailUserAccountData("UserParticipantForm",email);
+            
+            if(userData == false){
+              alert("Value not found !!!");
+            }
+
+              var style = "display:inline-block";
+
+              var images = `<img src="${userData.passporturl1}" width="200px"  height="150px" ${style} /> &nbsp &nbsp 
+              <img src="${userData.passporturl2}" width="200px"  height="150px"  ${style}   /> &nbsp &nbsp 
               
 
-              <img src="${image3}" width="200px"  height="150px"  /> &nbsp &nbsp 
-              <img src="${image4}" width="200px"  height="150px"   />
+              <img src="${userData.passporturl3}" width="200px"  height="150px" ${style}  /> &nbsp &nbsp 
+              <img src="${userData.passporturl4}" width="200px"  height="150px" ${style}   /> &nbsp &nbsp 
+              <img src="${userData.passporturl5}" width="200px"  height="150px"  ${style}   />
               `;
               
+
+
+              var     data = `
+                  
+            <div  class="card">
+
+            <table style="width:300px;">
+           
+            <tr>
+              <td>
+                  <label>
+                    Full Name:
+                  </label>
+              </td>
+              <td>
+                <span>${userData.name} </span>
+              </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label>Date of Birth:</label>
+            </td>
+
+            <td>
+               <span>${userData.dateOfBirth}</span>
+            </td>
+            </tr>
+            
+
+
+              <tr>
+            <td>
+                <label>Tel:</label>
+            </td>
+
+            <td>
+               <span>${userData.mainTel}</span>
+            </td>
+            </tr>
+               <tr>
+            <td>
+               <label>Email:</label>
+            </td>
+
+            <td>
+             <span>${userData.email}</span>
+            </td>
+            </tr>
+             <tr>
+            <td>
+               <label>Likes:</label>
+            </td>
+
+            <td>
+             <span>${userData.likes}</span>
+            </td>
+            </tr>   
+
+
+
+             <tr>
+            <td>
+               <label>Course Of Study:</label>
+            </td>
+
+            <td>
+             <span>${userData.courseOfStudy}</span>
+            </td>
+            </tr>   
+
+
+
+            
+             <tr>
+            <td colspan="2"> 
+               <label>The Scholars Question:</label>
+            </td>
+            </tr>   
+
+
+             <tr>
+            <td colspan="2">
+             <span>${userData.TheScholarsQuestion}</span>
+            </td>
+            </tr>   
+            
+          </table>
+
+
+
+          <table style="width:100%;">
+
+          <tr  style="width:100%;">
+              <td colspan="2"  style="width:100%;">
+               <div style="width:100%;height:auto;display:flex;flex-direction:row;">
+                ${images}
+              </div>
+              </td>
+          </tr>
+          </table>
+            
+          
+           </div>
+        
+
+                  `   ;
              
-              gallaryShow.innerHTML  = images;
+              gallaryShow.innerHTML  = data;
 
-              gallaryShow.style.visibility ="visible";
+              gallaryDisplayShow.style.visibility ="visible";
 
-          });
+            })();
+
+          }); // click event ends here
 
             
 

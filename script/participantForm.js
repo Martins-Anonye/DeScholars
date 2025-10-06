@@ -23,7 +23,7 @@ var educationQuelification = document.getElementById("educationQuelification");
 var courseOfStudy = document.getElementById("courseOfStudy");
 var passport = document.getElementById("passport");
 var submit = document.getElementById("submit");
-
+var hearUsFrom  = document.getElementById("hearUsFrom");
 
 
 var errorUnit = document.getElementById("errorUnit");
@@ -60,24 +60,51 @@ submit.addEventListener("click", e=>{
             
                   
 
-                    uploader("passport","progresscounter", season).then(e=>{
+                    // uploader("passport","progresscounter", season).then(e=>{
 
-                        //alert(e);
+                    //     //alert(e);
                     
-                        var passporturl = e;
+                    //     var passporturl = e;
 
-                        insertDataToFirebase(name,nickName,email,dateOfBirth,stateOfOrigin,
+                    //     insertDataToFirebase(name,nickName,email,dateOfBirth,stateOfOrigin,
+                    //     stateOfResident, residentAddress,mainTel,altTel,TheScholarsQuestion,educationQuelification,
+                    //     courseOfStudy,passporturl).then(data=>{
+                    //             alert("Data Save Succesffuly");
+                    //     }).catch(e=>{
+                    //             alert("Database : "+e);
+                    //     });
+                    
+                    // }).catch(e=>{
+                    //     alert("file Upload : "+e);
+
+                    // }); // end of uploader
+                    var year =  maintainanceSetting.year;
+                    var season  = maintainanceSetting.season;
+
+                    try{
+                    var passporturl1 =  await uploader("passport","progresscounter",year, season,1);
+                    var passporturl2 =  await uploader("passport2","progresscounter",year, season,2);
+                    var passporturl3 =  await uploader("passport3","progresscounter",year, season,3);
+                    var passporturl4 =  await uploader("passport4","progresscounter",year, season,4);
+                    var passporturl5 =  await uploader("passport5","progresscounter",year, season,5);
+
+                     insertDataToFirebase(name,nickName,email,dateOfBirth,stateOfOrigin,
                         stateOfResident, residentAddress,mainTel,altTel,TheScholarsQuestion,educationQuelification,
-                        courseOfStudy,passporturl).then(data=>{
+                        courseOfStudy,passporturl1,passporturl2,passporturl3,passporturl4,passporturl5).then(data=>{
                                 alert("Data Save Succesffuly");
                         }).catch(e=>{
                                 alert("Database : "+e);
                         });
+
+                    }catch(e){
                     
-                    }).catch(e=>{
                         alert("file Upload : "+e);
 
-                    }); // end of uploader
+                    }
+
+                   
+
+
                     
             }
 
@@ -101,7 +128,7 @@ const db = getDatabase(app);
 
 function insertDataToFirebase(name,nickName,email,dateOfBirth,stateOfOrigin,
 stateOfResident, residentAddress,mainTel,altTel,TheScholarsQuestion,educationQuelification,
-courseOfStudy,passporturl){
+courseOfStudy,passporturl1, passporturl2,passporturl3, passporturl4,passporturl5){
 
 
     var promise  = new Promise((resolve,reject)=>{
@@ -123,28 +150,33 @@ const newPostRef = push(dataRef);
 const pushId = newPostRef.key;
 
 
+    var domainParticipantProfileURL = maintainanceSetting.domainLink+"?participantUrlLink=yes&pushId="+pushId+"&timestamp="+timestamp+"&email="+email;
+
+    
 set(newPostRef,
           {
             name: name.value,
             nickName:nickName.value,
             email:email.value,
             dateOfBirth:dateOfBirth.value,
-            stateOfOrigin: stateOfOrigin.value,
+            // stateOfOrigin: stateOfOrigin.value,
             stateOfResident: stateOfResident.value,
             residentAddress: residentAddress.value,
+            hearUsFrom: hearUsFrom.value,
             mainTel : mainTel.value,
             altTel:altTel.value,
             TheScholarsQuestion:TheScholarsQuestion.value,
             educationQuelification:educationQuelification.value,
             courseOfStudy:courseOfStudy.value,
-            passport:passport.value,
-            photo1:1,
-            photo2:2,
-            photo3:3,
+            passporturl1:passporturl1,
+            passporturl2:passporturl2,
+            passporturl3:passporturl3,
+            passporturl4:passporturl4,
+            passporturl5:passporturl5,
             likes:0,
             pushId:pushId,
-            passporturl:passporturl,
-            timestamp:timestamp           
+            timestamp:timestamp,
+            participantUrlLink:  domainParticipantProfileURL        
           }
       ) .then(() => {
         var info  = "Data written successfully!";
