@@ -13,6 +13,53 @@
             background-color: darkolivegreen;
            
         }
+
+
+
+
+
+       #readInfor * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+#readInfor  {
+  /* background-color: #825cff; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#readInfor .app-wrapper {
+  background-color: white;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+#readInfor header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#readInfor header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+#readInfor header p {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
     </style>
     <script src="script/stateAndEdu.js"></script>
     <script  src="./script/developerMaintainanceSettings.js"></script>
@@ -27,6 +74,13 @@
 
 
       
+<link rel="stylesheet" href="./JqueryPlugin/tabs.css">
+
+<link rel="stylesheet" href="./JqueryPlugin/jquiery.css">
+<script src="./JqueryPlugin/jquery.js"></script>
+<script src="./JqueryPlugin/jquery.ui.js"></script>
+
+
 </head>
 <body>
     
@@ -38,7 +92,104 @@
             document.write(maintainanceSetting.season);
 
         </script>) Registration Form</u></h1>
-        <h3>Contest for Scholarship Abroad and Other awards of excellency</h3>
+
+
+   <h3>Contest for Scholarship Abroad and Other awards of excellency.</h3>
+
+
+
+       <ul id="tabs">
+                <li class="active">Read Document </li>
+                <li id="earntab">Register Now</li>
+                
+                
+        </ul>
+
+
+
+
+ <ul id="tab">
+                 <li class="tablistItem active" >
+
+
+                    <div  id="readInfor">
+
+
+
+                        <div class="app-wrapper">
+
+      
+                            <header>
+                                
+                                <h3>THE SCHOLARS RESOURCE & DEVELOPMENT INITIATIVE</h3>
+                            
+                    
+                            <hr>
+                            
+                            </header>
+
+                      
+
+                       <img src="./images/readInforDoc/TheScholars_1.jpg" width="100%" height="100%">
+                            
+                        </div>
+
+
+                    </div>
+                   
+                      
+
+                      <div class="app-wrapper">
+
+      
+                            <header>
+                                
+                                <h3>THE SCHOLARS RESOURCE & DEVELOPMENT INITIATIVE: Page 2</h3>
+                            
+                    
+                            <hr>
+                            
+                              <img src="./images/readInforDoc/TheScholars_2.jpg" width="100%" height="100%">
+                            
+                     
+                            </header>
+
+                     </div>
+
+
+
+
+
+
+
+                     
+
+                      <div class="app-wrapper">
+
+      
+                            <header>
+                                
+                                <h3>THE SCHOLARS RESOURCE & DEVELOPMENT INITIATIVE: Page 3</h3>
+                            
+                    
+                            <hr>
+                            
+                              <img src="./images/readInforDoc/TheScholars_3.jpg" width="100%" height="100%">
+                            
+                     
+                            </header>
+
+                     </div>
+
+
+                  </li>
+
+
+
+                 <li class="tablistItem " >
+
+                    <h3  style="color:lightblue; ">Before proceding ensure you have read documentation.</h3>
+                  
         <h4>REGISTER NOW / GAMES PROCESS: 
             <div style="width:fit-content;text-align: left;">
 
@@ -212,6 +363,46 @@
     <br>
     <br>
 
+                   
+
+                    </li>
+    
+  </ul>
+
+ <script>
+        
+
+        //----------------------------------------------------- Tabs ------------------------------------------------------//
+    
+        $(document).ready(function () {
+            $("ul#tabs li").click(function (e) {
+                // Remove active class from all li's
+                $("ul#tabs li").removeClass("active");
+    
+                // Add active class to the clicked/selected li only
+                $(this).addClass("active");
+    
+                // Get the index(position) of clicked li. Eg. if TAB1 is clicked this will return 0. if TAB4 is clicked this will return 3.
+                var i = $(this).index();
+    
+                // Remove active class from all #tab(content)
+                $("ul#tab .tablistItem.active").removeClass("active");
+    
+                // Add the active class to #tab(content) at the position of clicked tab.
+                $("ul#tab .tablistItem").eq(i).addClass("active");
+            });
+        });
+    
+        //------------------------------------------------ Tabs End -------------------------------------------------------//
+    
+    
+    </script>
+    
+
+
+
+
+       
     <script>
         var stateOfResident = document.getElementById("stateOfResident");
         var stateOfOrigin = document.getElementById("stateOfOrigin");

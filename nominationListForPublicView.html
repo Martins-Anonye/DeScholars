@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contestant Form</title>
+    <style>
+  #div1{
+    width: 300px;
+    height:210px;
+    border-width: 5px;
+    border-radius: 5px;
+ }
+
+
+ #cardcon{
+   display: flex;
+   width:100%;
+   height: auto;
+   flex-direction: row;
+   gap: 150px;
+ }
+ .card{
+   width: 200px;
+   height: 300px;
+   margin-right: 20px;
+ }
+
+
+ #gallaryDisplayShow{
+  width:100%;
+  height: 100%;
+  background-color: aquamarine;
+  position: absolute;
+  top:10px;
+  left: 0px;
+  padding: 20px;
+  visibility: hidden;
+ }
+
+
+ #gallaryShow img{
+  width:300px;
+  height: 320px;
+  
+ }
+
+ #gallaryShow{
+  width:95%;
+  height:70%;
+  margin: 50px 30px 5px 10px ;
+
+  background-color: burlywood;
+  display: flex;
+  flex-direction: row;
+  
+  overflow: scroll;
+ }
+  #closeGallary{
+    width:80px;
+    height: 30px;
+    margin-top: 10px;
+  }
+
+button{
+      margin:  0px 10px 2px 10px;
+      background-color: lightblue;
+      color: darkblue;
+      padding: 10px;
+
+    }
+  button:hover{
+    margin:  0px 10px 2px 10px;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+  }
+ 
+
+    </style>
+            <script src="MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+<script  src="./script/developerMaintainanceSettings.js"></script>
+
+</head>
+<body>
+
+   <img src="images/logoscholarsgod.png" width="50px" height="80px">
+    <a href="index.html"><button>Home page</button></a>
+       
+        <h1><u>The Scholars Season 
+          <script>
+            document.write(maintainanceSetting.season);
+
+        </script>:Public Nomination List</u></h1>
+       
+
+
+
+       <div class="app-wrapper">
+
+      
+        <header>
+         
+            
+           
+             <h4> Search Contestant by:<select id="searchContestantBy">
+              <option value="1">candidateID</option> 
+              <option value="2">Email</option></select>
+              <input type="text" placeholder="Enter Contestant  email or ID"  id="searchContestantEmailID"> 
+              
+              <button id="searchContestantBTN">search</button> <br>
+
+              <span id="errorUnit" style="color:red"></span>
+         </h4>
+ 
+        <hr>
+        
+        </header>
+
+        </div>
+
+ <div id="cardcon">
+    
+
+
+
+
+
+   </div>
+
+
+
+    <div id="gallaryDisplayShow" >
+
+        <button id="closeGallary">close</button> <br> <br>
+
+    
+    <div id="gallaryShow" >
+
+    </div>
+   </div>
+
+
+<script>
+  var closeGallary = document.getElementById("closeGallary");
+  closeGallary.addEventListener("click",e=>{
+
+         var gallaryDisplayShow = document.getElementById("gallaryDisplayShow");
+         gallaryDisplayShow.style.visibility ="hidden";
+  })
+</script>
+
+<script type="module" src="./script/nominationListPublicView.js"></script>
+
+</body>
+</html>
