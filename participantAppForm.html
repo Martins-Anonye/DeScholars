@@ -10,7 +10,7 @@
             margin: 5px;
         }
         body{
-            background-color: darkolivegreen;
+            background-color: white;
            
         }
 
@@ -18,7 +18,7 @@
 
 
 
-       #readInfor * {
+ #readInfor * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -60,34 +60,95 @@
   margin-top: 10px;
 }
 
+textarea{
+
+
+    min-width: 320px;
+    min-height: 50px;
+}
+button{
+    padding:10px;
+    color: white;
+    background-color: blue;
+    border-radius: 3px;
+}
+.characterCounter{
+    background-color: black;
+}
+
+
+ #gallaryDisplay *:not(.prev,.next){
+
+            width: 100%;
+            height: 100%;
+        }
+
     </style>
     <script src="script/stateAndEdu.js"></script>
     <script  src="./script/developerMaintainanceSettings.js"></script>
 
-        <script src="MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+    <script src="MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
 
 
+    <script type="module" src="./script/participantForm/particiQuestionSubmit.js"></script>
 
+    <script  src="./SignInGoogleButton/ScriptMaker/LocalStorageVariableHolder.js"></script>
+
+    
         <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
       <script src="script/uploadFile.js"></script>
 
 
-      
+                        
 <link rel="stylesheet" href="./JqueryPlugin/tabs.css">
 
 <link rel="stylesheet" href="./JqueryPlugin/jquiery.css">
 <script src="./JqueryPlugin/jquery.js"></script>
 <script src="./JqueryPlugin/jquery.ui.js"></script>
 
+<link rel="stylesheet" href="css/slide.css">
 
 </head>
 <body>
     
     <center>
 
-        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Home page</button></a>
-        <h1><u>The scholars 
+        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Return to Home page</button></a>
+        <a href="contact.html"><button>Contact Us</button></a>
+       <hr>
+        <div style="text-align: center; width:100%; background-color:lightblue;">   
+            <h3>
+                  Before  proceeding to Registration Form as Participant, These two steps must be completed.
+            </h3>
+             <div style="text-align: left; min-width:300px;position: relative;left: 40%;">
+              
+                <h4>
+                    <div> <span style="color:red">Step 1: </span> &nbsp;&nbsp; Create Account. >> 
+                        <a href="SignInGoogleButton/signInWithGoogleAccount.html"><button> Sign in / SIGN UP</button></a> 
+                    </div>
+                    
+                
+                      <h4 style="display: none;"  id="loginEmaiDisplay"> Your Login Email is: <span id="loginEmailName"></span>   , move to Step 2. <br> Re-login If email not  yours,
+                        </h4>
+
+                      
+
+                    <div><span style="color:red">Step 2: </span>&nbsp;&nbsp; # 
+                        <script>
+                            document.write(maintainanceSetting.registrationPriceText);
+                        </script> (Naira) Registration Fee,  
+                           <h4>Your login email is your payment ID  <button id="payTenK"> Pay Now</button></h4>
+                        </div>
+                       <span style="font-size: 12px;">I have paid before or still having chanlengies on after payment ? <br>Answer: Relogin and payment  revalidated. Or contact us for more help. </span>
+
+                </h4>
+            </div>
+        </div>
+       
+        <h1>
+            <span style="color:red">Step 3</span> <br>
+            <u>The scholars 
             ( Season  <script>
             document.write(maintainanceSetting.season);
 
@@ -96,11 +157,65 @@
 
    <h3>Contest for Scholarship Abroad and Other awards of excellency.</h3>
 
+   
+   
+<div id="gallaryDisplay"  style="width: 400px; height: 300px; margin: 0% 10% 0% 10%;" >
+
+    
+    <div class="slideshow-container"  style="width:100%; height: 100%;">
+    
+    
+  <div class="myslides fade">
+    <img src="images/officialImages/loadwalk.jpg" width="100%" height="100%" />
+
+  </div>
+
+  <div class="myslides fade">
+    <img src="images/officialImages/freestylewalk.jpg" width="100%" height="100%" />
+
+  </div>
+
+  <div class="myslides fade">
+    <img src="images/officialImages/readingField2.jpg" width="100%" height="100%" />
+
+  </div>
+
+  
+
+  <div class="myslides fade">
+    <img src="images/officialImages/phoneCaps.jpg" width="100%" height="100%" />
+
+  </div>
+
+  <div class="myslides fade">
+        <img src="images/contestant2.png" width="100%" height="100%" />
+    </div>
+  
+  <a class="prev">&#10094;</a>
+
+  <a class="play">|>|</a>
+
+  <a class="next">&#10095;</a>
+   </div>
+</div>
+
+
+
+
+
+   
+   
+   <br>
+   <br>
+        <span> This symbol <span class="important">*</span> indicate compulsory.</span> <br>
+
 
 
        <ul id="tabs">
                 <li class="active">Read Document </li>
-                <li id="earntab">Register Now</li>
+
+                  <li>Your Answer <span class="important">*</span></li>
+                <li id="personalData">Register Now (Personal Data)</li>
                 
                 
         </ul>
@@ -137,79 +252,234 @@
 
                     </div>
                    
-                      
+                  
+                  </li>
 
+                  <li  class="tablistItem">
+
+                    <form>
+                    
                       <div class="app-wrapper">
 
       
-                            <header>
+                            <header style="background-color: white;">
                                 
-                                <h3>THE SCHOLARS RESOURCE & DEVELOPMENT INITIATIVE: Page 2</h3>
+
+                             
+                                    
+                            
+                                        
+                                    <h3 style="max-width: 500px; height: auto; text-align: justify;">With this in mind, kindly provide answers to the following questions (Endeavour to submit your answers within three days of starting this application) <br>
+
+                                    Read through the questions below and carefully provide answers.
+                                    It is important you avoid the use of internet as much as possible to provide  
+                                    the answers as this may mar your chances of being selected. 
+                                    We need to evaluate you on the originality of ideas and knowledge and most importantly, your thoughts on the nation’s economic situations.
+                                    </h3>
+
+                         
+                                    
+                                    
+                                    <ol>
+
+  
+
+
+                                <li>
+
+                         <h3 style="max-width: 500px; height: auto; text-align: justify;">
+
+                        According to Nelson Mandela of South Africa Education  
+                        is the most powerful weapon which you can use to change the world. <br>
+                         Please explain in not more than 500 words the underlying concept of  
+                         the above quote and its application to a growing economy.
+                                          </h3>
+                                          
+                                          <span id="error1" style="max-width: 300px;"></span> <span id="characterCounter1" class="characterCounter"></span> <br>
+                          <textarea placeholder="enter your answer below" id="questions1" maxlength="500"></textarea>
+                                            
+                                          </h2>
+                                            <hr>
+
+                                         
+                                    </li>
+
+
+
+
+                                    <li>
+
+                                          <h3 style="max-width: 500px; height: auto; text-align: justify;">
+
+                          	List 5 major cash crops produced in Nigeria by Region. 
+                           <br>(Appropriate accordingly to South-east, South-west, South-south, <br> North-east, North-west and North-central).  (100 words maximum)
+
+                                          </h3>
+                                          
+                                        
+                             <span id="error2" style="max-width: 300px;"></span> <span id="characterCounter2" class="characterCounter"></span> <br>
+
+                                            <textarea placeholder="enter your answer below" id="questions2" maxlength="100"></textarea>
+                                            
+                                          </h2>
+                                       <hr>
+                                         
+                                    </li>
+
+
+
+
+
+
+
+
+
+                                   <li>
+
+                                          <h3 style="max-width: 500px; height: auto; text-align: justify;">
+
+                          In 10 years from 2025, what do you see yourself to be ?(50 words maximum)
+                                          </h3>
+                                          
+                     <span id="error3" style="max-width: 300px;"></span> <span id="characterCounter3" class="characterCounter"></span> <br>
+
+                                            <textarea placeholder="enter your answer below" id="questions3" maxlength="50"></textarea>
+                                            
+                                          </h2>
+                                       <hr>
+                                         
+                                    </li>
+
+
+
+
+                                   
+                                   
+                                    <li>
+
+                                          <h3 style="max-width: 500px; height: auto; text-align: justify;">
+
+                         	In not more than 150 words, discuss the most critical economic problem in Nigeria? <br>
+                             In doing so, kindly apply the knowledge of your discipline to recommend ways of improvement?
+                                          </h3>
+                                          
+                                        
+                                        <span id="error4" style="max-width: 300px;"></span> <span id="characterCounter4" class="characterCounter"></span> <br>
+
+                                            <textarea placeholder="enter your answer below" id="questions4" maxlength="150"></textarea>
+                                            
+                                          </h2>
+                                       <hr>
+                                         
+                                    </li>
+
+
+
+
+                                    
+                                  
+                                     <li>
+
+                                          <h3 style="max-width: 500px; height: auto; text-align: justify;">
+
+                       	How many referrals do you have for THE SCHOLARS project 
+                        (Show evidence of 2 referrals)? (100 words maximum) <br>
+                        
+                        <span style="color:red">
+                          Please note that this programme has been designed to create a balance 
+                        between the rising unemployment rate in Nigeria and the supposed unemployability of the Nigerian Graduates. 
+                        Therefore, this project has been designed for a massive engagement of 
+                         the graduate population in Nigeria to re-invigorate the nation’s human resource 
+                          potentials and improve the concept of our political economy. 
+
+                        </span>
+                                        </h3>
+                                          
+                                     <span id="error5" style="max-width: 300px;"></span> <span id="characterCounter5" class="characterCounter"></span> <br>
+
+                                            <textarea placeholder="enter your answer below" id="questions5" maxlength="100"></textarea>
+                                            
+                                          </h2>
+                                       <hr>
+                                 
+                                    </li>
+
+
+
+
+
+
+
+                                     <li>
+
+                                          <h3 style="max-width: 500px; height: auto; text-align: justify;">
+
+                                         
+                                            <span style="color:red">Terms of submission </span>
+                                            
+                                            <span style="color:blue">
+                                            I understand that any offer as scholar in this programme that  
+                                            I receive will be based on the information given in this form and that  
+                                            if am found to have compromised in the course of providing this information,  
+                                            any such offer will be withdrawn. I have read and understood the notes for   
+                                            the completion of the form. 
+                                            </span>
+                                   
+                                        </h3>
+                                          
+                                        <span style="color:blue">
+
+                                           Clicking on the "Personal Information" bellow,
+                                           <br> means you accepted the above term. <br>
+                                           And all entry will be submited after completing personal data.
+                                        </span>
+                                          <br>
+                                        <br><button id="goToPersonalInfor">Personal Information</button>
+                                            
+                                          </h2>
+                                       <hr>
+                                         
+                                    </li>
+
+                                </ol>
+                               
                             
                     
-                            <hr>
-                            
-                              <img src="./images/readInforDoc/TheScholars_2.jpg" width="100%" height="100%">
-                            
-                     
+                          
                             </header>
 
-                     </div>
+                             
 
-
-
-
-
-
-
-                     
-
-                      <div class="app-wrapper">
-
-      
-                            <header>
-                                
-                                <h3>THE SCHOLARS RESOURCE & DEVELOPMENT INITIATIVE: Page 3</h3>
-                            
-                    
-                            <hr>
-                            
-                              <img src="./images/readInforDoc/TheScholars_3.jpg" width="100%" height="100%">
-                            
-                     
-                            </header>
-
-                     </div>
-
+                       </div>
+                       </form>     
 
                   </li>
 
 
+                 <li class="tablistItem" >
 
-                 <li class="tablistItem " >
-
-                    <h3  style="color:lightblue; ">Before proceding ensure you have read documentation.</h3>
+                    <h3  style="color:blue;">Having provided answer to questions, 
+                        <br> Read the instruction carefully and proceed. </h3>
                   
-        <h4>REGISTER NOW / GAMES PROCESS: 
+        <h4>REGISTER NOW : 
             <div style="width:fit-content;text-align: left;">
 
            (1) Fill the form below>  <br>
             (2) Attend Audition>  <br>
-            (3) Pre-college experience >   <br>
-            (4) Edutainment / College
+            (3) Nomination >   <br>
+            (4) National Challenge 
             <br>
             (5) Evictions
             <br>
-            (6) Reward for uncommon feat.
+            (6) Rewards.
         </h4>
             </div>
-        <h5>You most not be a winner to be awarded. Your enagement, vote, passion and activities can award you something equivalent to winner.</h5>
+        <h5>You most not be a winner to be awarded. Your enagement, vote, passion and activities can award you something equivalent to a winner.</h5>
 
         <hr> More detail about 1st, 2nd, 3rd, 4th, 5th,........and activities... visit <button>About Page</button>
         <hr>
         <h2>Fill form bellow and wait for Entry Normination or selection proces.....</h2>
        
-        <span> This symbol <span class="important">*</span> indicate important field.</span> <br>
         <table>
             <tr>
                 <td>Name <span class="important">*</span>:</td>   
@@ -222,9 +492,23 @@
             
             <tr>
                 <td>Email<span class="important">*</span>:</td>   
-                <td><input type="email"  id="email" placeholder="enter your email" required></td>
+                <td><input type="email"  id="email" placeholder="enter your email" required readonly></td>
             </tr>
 
+            <script>
+                        var localEmailVerificantioHolder = new LocalEmailVerificantioHolder();
+
+                            var emailSignin =  localEmailVerificantioHolder.getEmail();
+
+                            if(emailSignin != null && emailSignin != "undefined"){
+                              document.getElementById("loginEmailName").innerText= emailSignin;
+                              document.getElementById("loginEmaiDisplay").style.display="block";
+                                var email = document.getElementById("email");
+                               email.value=emailSignin;
+                             }
+
+
+                      </script>
              <tr>
                 <td>Date of Birth <span class="important">*</span>:</td>   
                 <td><input type="date"  id="dateOfBirth" required></td>
@@ -240,7 +524,7 @@
                 <td><select id="stateOfResident"  required></select></td>
              </tr>
                <tr>
-                <td>Where do u hear about us: <span class="important">*</span>:</td>   
+                <td>How do u hear about us: <span class="important">*</span>:</td>   
                 <td><select id="hearUsFrom"  required> 
                     <option>
                         Google
@@ -277,7 +561,7 @@
             
 
             <tr>
-                <td>Highest Quelification:</td>
+                <td>Highest Qualification:</td>
                 <td><select id="educationQuelification"  required></select></td>
 
             </tr>
@@ -313,8 +597,8 @@
 
 
              <tr>
-                <td>Photo 5:</td>
-                <td><input type="file" id="passport5"  placeholder="photo"></td>
+                <td>Video File:</td>
+                <td><input type="file" id="passport5"    placeholder="photo"></td>
 
             </tr>
 
@@ -329,14 +613,18 @@
          <div>
          <span>Why join The scholars , <br> Your hoobies and What will you do with the found as a winner  <span class="important">*</span>?</span>  
 
-           <br> <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="TheScholarsQuestion"  ></textarea>
+           <br> 
+             <span id="error6" style="max-width: 300px;"></span> <span id="characterCounter6" class="characterCounter"></span> <br>
+
+                                   
+           <textarea placeholder="Enter answer here" style="width:300px; height: 200px;" id="questions6"  ></textarea>
             
 
 
 
            <table>
              <tr>
-                <td  colspan="2" style="color:lightblue; text-align: center;">
+                <td  colspan="2" style="color:blue; text-align: center;">
                     <br>
                     Crosscheck before submitting</td>
 
@@ -430,9 +718,12 @@
 
 
     </script>
+<script type="module" src="./script/participantForm/participantMakePayment.js"></script>
 
 
-<script type="module" src="./script/participantForm.js"></script>
 
+<script type="module" src="./script/participantForm/participantForm.js"></script>
+
+<script src="script/slideShow.js"></script>
 </body>
 </html>
