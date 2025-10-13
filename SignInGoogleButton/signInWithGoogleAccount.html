@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholars Sign In</title>
+    <style>
+        .menudiv{
+          position: absolute;
+           text-align: center; 
+           top:5%;
+           width: 100%; 
+           height: auto;
+          z-index: 2;
+      }
+      .menudiv a{
+          text-decoration: none;
+      }
+      .menudiv button, .btn{
+          width: 80px;
+          border-radius: 10px;
+          
+          background-color: black;
+          color:lightblue;
+          padding: 2px;
+          font-size: 14px;
+      }
+
+      .menudiv button:hover, .btn:hover{
+          background-color: white;
+          color:blue;
+
+      }
+  </style>
+    
+    <!-- <script src="../FirebaseConnection/FirebaseConfiggFile.js"></script> -->
+             <script src="../MainSystemLogin/FirebaseConnection/FirebaseConfiggFile.js"></script>
+
+    <!-- <script  src="../FirebaseLoginSystem/LocalStorageVariableHolder/LocalStorageVariableHolder.js"></script> -->
+    <script  src="ScriptMaker/LocalStorageVariableHolder.js"></script>
+
+</head>
+<body>
+    
+
+    <div style="text-align: center;">
+        <div class="menudiv">
+            <a href="/"> <button class="btn-white">HOME</button> </a>
+            <a href="SignUpWithGoogleAccount.html"> <button class="btn-white">SignUp</button> </a>
+    
+            
+      </div>
+      <br><br><br>
+           
+      <br><br><br>
+      
+      
+      <h4>Your login email be serve as your payment ID</h4>
+
+<input type="button" id="googleSignIn" value="Google Sign In"/>
+
+
+<br><br><br>
+           
+
+<br><br><br>
+
+
+<span>If authentication failed: ensure good network service and refresh page to continue</span>
+<button onclick="()=>{window.location.href = window.location.href; }">refresh</button>
+
+</div>
+<script type="module" src="/SignInGoogleButton/ScriptMaker/scriptGoogleBTNSignin.js"></script>
+</body>
+</html>

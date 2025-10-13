@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+
+#navdiv{
+    width: 100%;
+    height: 50px;
+    background-color: darkblue;
+}
+   
+        #topnav li{
+   display: inline-block;
+   margin: 10px;
+            color: white;
+        }
+        #container{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+            background-color:whitesmoke;
+        }
+
+        #container div{
+            flex-wrap: wrap;
+            flex:4 auto 2;
+            flex-flow: row;
+
+            width:50%;
+            display: inline-block;
+            gap: 5;
+
+            padding: 20px;
+        }
+
+      
+        h1{
+            color:darkblue;
+            background-color: aqua;
+        }
+
+
+        button{
+            padding: 10px;
+            background-color: darkblue;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .slide{
+            display: inline-block;
+            width:fit-content;
+            color: rebeccapurple;
+            padding: 10px;
+        }
+        .slideDivider{
+            color: rebeccapurple;
+        }
+        a{
+            color:white
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div id="navdiv"> 
+        <nav>
+            <ul id="topnav">
+                <li>
+                   <a href="../index.html">Home </a> 
+                </li>
+               
+            </ul>
+        </nav>
+    </div>
+    <br>
+   <div>
+
+    
+   
+
+  
+   <div id="container">
+
+
+        <div id="maincontent">
+            <h1>The Scholar Login System</h1>
+          
+            <h4>Kindly login to start Registration, If you dont have account, Signup first !</h4>
+
+    
+            <div><a href="/signinSystem"><button>Login</button></a>  &nbsp; &nbsp;
+                 <a href="/signupSystem"> <button>SignUp</button></div></a>
+        </div>
+
+
+    <div id="gallaryDisplay">
+
+        <img src="images/campusImage.jpg" width="100%" height="auto" />
+    </div>
+
+
+
+    <script>
+
+
+
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") return;
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+
+var url = window.location.href;
+let params = (new URL(url)).searchParams;
+var cpuSerialNumber =  params.get('cpuSerialNumber');
+//var hddSerialNumber = params.getAll('name');
+var hddSerialNumber = params.get('hddSerialNumber');
+var macAddress = params.get('macAddress');
+
+
+var getUserAgentInformation= {
+    cpuSerialNumber,hddSerialNumber,macAddress
+};
+
+
+      window.localStorage.setItem("cpuSerialNumber", cpuSerialNumber);
+      window.localStorage.setItem("hddSerialNumber", hddSerialNumber);
+      window.localStorage.setItem("macAddress", macAddress);
+    </script>
+
+
+</div>
+</body>
+</html>

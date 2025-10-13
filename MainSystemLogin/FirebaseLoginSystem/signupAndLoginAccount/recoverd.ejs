@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mainCon {
+            display: flex;
+            margin: 0%;
+            justify-content: center;
+            color: #ffffff;
+            background-image: url("/images/campusImage.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+
+        }
+
+
+
+        #backgroundPhoto{
+            color:white;
+            /* background-image: url(images/cvpaper.jpg); */
+             background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width:100%;
+            height: 100%;
+            z-index: 1;
+            position: fixed; 
+
+        }
+
+    #imagesHolderMaker{
+            width:100%;
+            height: 100%;
+        }
+    #coverImage{
+             width:100%;
+            height: 100%;
+            z-index: 2;
+            position: fixed;  
+
+            background-color: black;
+            opacity: 0.5;
+        }
+
+
+
+
+
+        #wrapper {
+            margin-top: 80px;
+            width: 420px;
+            color: #ffffff;
+            background: transparent;
+            padding: 10px 40px;
+           /*  backdrop-filter: blur(10px); */
+            border: 2px solid rgba(255, 255, 255, .2);
+            height: 450px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        #myh1 {
+            font-size: 36px;
+            text-align: center;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 50px;
+            margin: 30px 0px;
+            position: relative;
+        }
+
+        .input-box input {
+            background: transparent;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+            border: 2px solid rgba(255, 255, 255, .2);
+            border-radius: 40px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .input-box input::placeholder {
+            color: #ffffff;
+            padding-left: 10px;
+        }
+
+        .input-box #img {
+            position: absolute;
+            right: 20px;
+            bottom: 30%;
+            transform: translate(+50%);
+        }
+
+        #checkbox {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            margin: -15px 0 3px;
+            padding-right: 5px;
+        }
+
+        #checkbox input {
+            accent-color: #fff;
+            margin: 3px;
+        }
+
+        #checkbox a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        #checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        #wrapper p {
+            text-align: center;
+
+        }
+
+        #wrapper p a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        #wrapper p a:hover {
+            text-decoration: underline;
+        }
+
+       
+
+        #myBtn:active {
+            background-color: hsl(0, 0%, 80%);
+        }
+
+        .menudiv{
+            position: absolute;
+             text-align: center; 
+             top:5%;
+             width: 100%; 
+             height: auto;
+            z-index: 2;
+        }
+        .menudiv button, .btn{
+            width: 80px;
+            border-radius: 10px;
+            
+            background-color: black;
+            color:lightblue;
+            padding: 2px;
+            font-size: 14px;
+        }
+
+        .menudiv button:hover, .btn:hover{
+            background-color: white;
+            color:blue;
+
+        }
+
+        .menudiv a{
+          text-decoration: none;
+      }
+        /* .btn{
+            width:150px;
+
+        } */
+    </style>
+
+    <script src="../FirebaseConnection/FirebaseConfiggFile.js"></script>
+     <!-- Include the  sweetalert2@9 library   for pop alert box-->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9">
+    </script>
+    <script  src="../LocalStorageVariableHolder/LocalStorageVariableHolder.js"></script>
+
+</head>
+
+<body>
+
+    <div id="backgroundPhoto">
+        <img  id="imagesHolderMaker" width="100%" height="100%" />
+    </div>
+    
+    <div id="coverImage">
+    </div>
+
+    <img src="/images/logo/PendroAIok.png" width="100px" height="80px"  style="float:left;position: absolute;left:20px;top:20px;z-index: 50;background-color: bisque;"/>
+
+    
+    <div id="mainCon">
+        <div class="menudiv">
+            <a href="/"> <button class="btn-white">HOME</button> </a>
+            <a href=""> <button class="btn-white">Schools</button> </a>
+    
+            <a href=""> <button class="btn-white">About</button> </a>
+            <a href=""><button class="btn-white">Contact</button> </a>       
+      </div>
+
+        <div id="wrapper">
+            <h1 id="myh1">Email Recoverd</h1>
+
+
+            <form action="/" method="post" id="loginForm">
+
+                <h5 id="processing">Processing ..... wait...</h5>
+    
+                <!-- <%=verified%> -->
+                <% if (typeof email !="undefined" ) { %>
+
+                    <script type="module">
+            
+                       import {checkEmailUserAccountAndChangeVerificationStatusTrue} from "../checkdatabaseForEmail/orderByEmailCheckup.js"
+                        let email = '<%- JSON.stringify(email) %>'; // a string
+                        let verified = '<%- JSON.stringify(verified) %>'; // a string
+
+                        email = email.replaceAll("\"","");
+                        verified = verified.replaceAll("\"","");
+                        checkEmailUserAccountAndChangeVerificationStatusTrue(email);
+
+                        document.write(`<h4>${email} \n  <br> and verified : ${verified} </h4>`);
+
+                        document.write(`<a href="/signinSystem" style="color:lightblue">login</a> <br>`);
+                        document.getElementById("processing").style.display ="none";
+                    </script>
+                 <%}else{%>
+
+                    <h5 id="processing">verified !!!, but something went wrong</h5>
+
+
+                <%}%>
+
+                <hr>
+                Already have account  :<a href="/signinSystem" style="color:lightblue">login</a>
+
+                <br>
+                
+                
+
+                <p>Don't have an account ? <a href="/signupSystem" style="color:lightblue"> Register</a></p>
+                <div style="color:white">
+                <br>
+               
+            </div>
+            </form>
+        </div>
+    </div>
+    <!-- <script type="module" src="../signUpAndSignInAssets/accountRecoveryLink.js"></script> -->
+
+    <!-- <script type="module" src="/SignInGoogleButton/ScriptMaker/scriptGoogleBTNSignin.js"></script> -->
+
+
+</body>
+
+</html>
