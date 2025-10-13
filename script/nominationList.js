@@ -217,7 +217,8 @@ document.addEventListener(SpecialLoader, e=>{
  var gallaryDisplayShow =  document.getElementById("gallaryDisplayShow");
 
             var gallaryShow =  document.getElementById("gallaryShow");
-                        (async()=>{
+                       
+            (async()=>{
 
 
   

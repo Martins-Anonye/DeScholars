@@ -3,7 +3,7 @@
 import{initializeApp} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"; 
 import {getDatabase, ref, onValue, set, get,child,update,remove,push,query, orderByChild,equalTo} from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
-import {checkEmailUserAccountData} from "./checkdatabaseForEmail/orderByEmailCheckupUserData.js"
+import {checkEmailUserAccountData,checkCandidateNominationAccountData} from "./checkdatabaseForEmail/orderByEmailCheckupUserData.js"
 
 
 
@@ -26,6 +26,90 @@ getListOfApplicant().then(e=>{
   alert(e);
 });
 
+//import {checkEmailUserAccountData} from "./checkdatabaseForEmail/orderByEmailCheckupUserData.js"
+
+ 
+         
+
+var searchContestantBTN = document.getElementById("searchContestantBTN");
+ var errorUnit = document.getElementById("errorUnit");
+
+searchContestantBTN.addEventListener("click", e=>{
+  
+  var searchContestantBy  = document.getElementById("searchContestantBy");
+    
+  var searchByType = 1;
+
+  if(searchContestantBy.value == "2"){
+    searchByType = 2;
+  }
+ 
+
+
+
+                
+      var searchContestantEmailID = document.getElementById("searchContestantEmailID");
+      if(searchContestantEmailID.value == null || searchContestantEmailID.value == 'undefined' || searchContestantEmailID.value == '' ){
+
+        
+
+        if(searchByType == 1){
+          alert("Error: Candidate input is empty, Provide Candidate ID");
+
+        }
+        else{
+          alert("Error: Candidate input is empty, Provide Candidate Email");
+
+        }      
+        return false;
+      }
+
+      callBySearchSupport(searchByType,searchContestantEmailID.value);
+
+});
+
+function callBySearchSupport(searchByType, valueToSearchFor){
+
+  (async()=>{
+    errorUnit.innerText = "";
+    var doesEmailExistInNorminationList =  ''; 
+        if(searchByType == 1){
+        doesEmailExistInNorminationList =  await checkCandidateNominationAccountData("NominationList",valueToSearchFor);
+        }
+        else{
+          doesEmailExistInNorminationList =  await checkEmailUserAccountData("NominationList",valueToSearchFor);
+
+        }
+
+    if(doesEmailExistInNorminationList != false){
+        var pushId =  doesEmailExistInNorminationList.pushId;
+        alert("Candidate Found in Nomination List");
+          
+       var data=""; 
+
+            data+=layoutFavtorial(userData,data,0);
+
+             document.getElementById("cardcon").innerHTML = data;
+
+
+                  var SpecialLoaderEvent = new Event(SpecialLoader);
+                  document.dispatchEvent(SpecialLoaderEvent);
+
+    }else{
+
+        errorUnit.innerText=`User account does not exist in the nomination list.\n or has being removed.`;
+
+    }
+
+  })();
+  
+}
+
+
+
+
+
+//////
 
 function getListOfApplicant(){
 
@@ -33,14 +117,49 @@ function getListOfApplicant(){
 
     var promise = new Promise((resplve, reject )=>{
 
-
+var counter = 1;
    
     get(myRef).then((snapshot) => {
          var data="";
       if (snapshot.exists()) {
     
     snapshot.forEach(function(userDat, indexCount) {
-      var userData = userDat.val();
+                  var userData = userDat.val();
+            data+=layoutFavtorial(userData,data,indexCount,counter);
+            counter++;
+
+                  });
+                  document.getElementById("cardcon").innerHTML = data;
+
+
+                  var SpecialLoaderEvent = new Event(SpecialLoader);
+                  document.dispatchEvent(SpecialLoaderEvent);
+                   return true;
+
+      } else {
+        return false;
+        }
+    }).catch((error) => {
+      console.error(error);
+    });
+
+
+});
+
+return promise;
+
+
+
+}
+
+
+
+
+
+function layoutFavtorial(userData,data,indexCount,counter){
+
+
+      
 
 
  
@@ -157,7 +276,7 @@ function getListOfApplicant(){
              <tr>
             <td colspan="2">
             
-               <hr/>
+              count: <span>${counter} </span>
             </td>
 
             </tr>
@@ -169,33 +288,12 @@ function getListOfApplicant(){
          
                   `;
                   
-                  
-                  });
-                  document.getElementById("cardcon").innerHTML = data;
 
-
-                  var SpecialLoaderEvent = new Event(SpecialLoader);
-                  document.dispatchEvent(SpecialLoaderEvent);
-                   return true;
-
-      } else {
-        return false;
-        }
-    }).catch((error) => {
-      console.error(error);
-    });
-
-
-});
-
-return promise;
+                  return  data;
 
 
 
 }
-
-
-
 
 
 

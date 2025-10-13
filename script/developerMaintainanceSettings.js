@@ -1,5 +1,8 @@
 
 var maintainanceSetting = {
+    registrationPrice:10000,
+    registrationPriceText:"10,000",
+
     pricePerVote:100,
     year: "2025",
     season:"1",
