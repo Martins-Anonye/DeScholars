@@ -58,4 +58,22 @@ goToPersonalInfor.addEventListener("click",e=>{
 
 });
 
+
+
+ 
+               
+               
+
+var goToQuestionier = document.getElementById("goToQuestionier");
+
+goToQuestionier.addEventListener("click",e=>{
+    e.preventDefault();
+  document.getElementById(`questionerpointer`).click();
+
+  window.location.href="#questionerpointer";
+  
+
+});
+
+
        
