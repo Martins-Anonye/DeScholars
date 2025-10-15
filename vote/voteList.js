@@ -284,7 +284,7 @@ function layoutFactoriaMaker(userData, indexCount, data, counter){
                     
                     <div id="voteBoard${indexCount}" style="display:none;">
                     <h4>
-                            No of Vote to Cast: <br><input type="text" id="quantity${indexCount}" value="1" style="width:5em; text-align:center;">  
+                            No of Vote to Cast: <br><input type="number" id="quantity${indexCount}" value="1" style="width:5em; text-align:center;">  
                             <span class="mathsigns noselectForSpanAsButton" id="plus${indexCount}">+</span> &nbsp; &nbsp;
                             <span class="mathsigns noselectForSpanAsButton" id="minus${indexCount}">-</span>
                      </h4>
