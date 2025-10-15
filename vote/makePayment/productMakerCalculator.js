@@ -41,6 +41,74 @@ minus.addEventListener("click",e=>{
     
 })
 
+//  quantity.oninput= e=>{
+
+//         //(textmsg.style.height.replace("px","")*1)+
+       
+
+        
+//     }
+
+
+quantity.addEventListener('keyup', function(event) {
+  const pressedKey = event.key;
+
+
+  
+  // Check if the pressed key is a number (0-9)
+  if (!isNaN(parseInt(pressedKey)) && pressedKey >= '0' && pressedKey <= '9') {
+    console.log(`Number key pressed: ${pressedKey}`);
+    // You can add your desired logic here, like updating an input field,
+    // triggering a function, etc.
+
+     if(quantity.value != ""){
+                 counter= quantity.value*1;
+                quantity.value = counter;
+                calculatePrice(counter);
+        }
+
+
+    }
+
+
+ 
+
+});
+
+
+
+
+
+
+
+
+
+
+quantity.addEventListener('keyup', function(event) {
+  const pressedKey = event.key;
+
+
+ 
+
+   // Detect Backspace key
+  if (pressedKey === 'Backspace') {
+  counter= quantity.value*1;
+    quantity.value = counter;
+    calculatePrice(counter);
+  }
+
+  // Detect Delete key
+  if (pressedKey === 'Delete') {
+    counter= quantity.value*1;
+    quantity.value = counter;
+    calculatePrice(counter);
+  }
+
+
+ 
+
+});
+
 }
 
 function calculatePrice(counterQuantity){

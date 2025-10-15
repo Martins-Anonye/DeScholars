@@ -56,10 +56,12 @@ function getListOfApplicant(){
     get(myRef).then((snapshot) => {
          var data="";
       if (snapshot.exists()) {
-    
+             var counter = 1;
             snapshot.forEach(function(userDat, indexCount) {
                   var userData = userDat.val();
-                  data += layoutFactoriaMaker(userData, indexCount,data);
+                  
+                  data += layoutFactoriaMaker(userData, indexCount,data,counter);
+              counter++;
             });
                   document.getElementById("cardConMain").innerHTML = data;
 
@@ -178,8 +180,9 @@ function callBySearchSupport(searchByType, valueToSearchFor){
         var pushId =  doesEmailExistInNorminationList.pushId;
           
         var data="";
-
-        data += layoutFactoriaMaker(doesEmailExistInNorminationList,1,data);
+       var counter = 1;
+        data += layoutFactoriaMaker(doesEmailExistInNorminationList,1,data,counter);
+        counter++
 
         document.getElementById("cardConMain").innerHTML = data;
 
@@ -200,7 +203,7 @@ function callBySearchSupport(searchByType, valueToSearchFor){
 
 
 
-function layoutFactoriaMaker(userData, indexCount, data){
+function layoutFactoriaMaker(userData, indexCount, data, counter){
 
 
   
@@ -236,6 +239,8 @@ function layoutFactoriaMaker(userData, indexCount, data){
                  var  nickName = nameAndNickName[1];
                  var canID =  userData.candidateID;
                  var pricePerVote = maintainanceSetting.pricePerVote;
+
+                               
                    
                      data += `
         
@@ -279,7 +284,7 @@ function layoutFactoriaMaker(userData, indexCount, data){
                     
                     <div id="voteBoard${indexCount}" style="display:none;">
                     <h4>
-                            No of Vote to Cast: <br><input type="number" id="quantity${indexCount}" value="1" style="width:5em; text-align:center;">  
+                            No of Vote to Cast: <br><input type="text" id="quantity${indexCount}" value="1" style="width:5em; text-align:center;">  
                             <span class="mathsigns noselectForSpanAsButton" id="plus${indexCount}">+</span> &nbsp; &nbsp;
                             <span class="mathsigns noselectForSpanAsButton" id="minus${indexCount}">-</span>
                      </h4>
@@ -295,8 +300,12 @@ function layoutFactoriaMaker(userData, indexCount, data){
                    </button>
                    </div>
              
-
-
+    
+                   <br>
+            
+            
+              count: <span>${counter} </span>
+          
 
 
 
