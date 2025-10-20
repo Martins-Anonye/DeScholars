@@ -10,7 +10,7 @@ ul#tabs li {
     display: inline-block;
     border-bottom: solid 1px #000;
     padding: 10px 20px;
-    color: white;
+    color: black;
     cursor: pointer;
     font-size: 14px;
 }
