@@ -10,7 +10,7 @@
             margin: 5px;
         }
         body{
-            background-color: white;
+            background-color: aquamarine;
            
         }
 
@@ -83,6 +83,23 @@ button{
             height: 100%;
         }
 
+        
+        #quiestionaireSection{
+            text-align: center;
+            position: relative;
+            left: 2%;
+            right: 2%;
+            display: flex;
+            flex-direction: row;
+        }
+        #quiestionaireSection li{
+
+          display: inline-block;
+           margin: 30px;
+             box-shadow: 0 10px 30px rgb(0, 0, 0);
+             padding: 10px;
+
+        }
     </style>
     <script src="script/stateAndEdu.js"></script>
     <script  src="./script/developerMaintainanceSettings.js"></script>
@@ -112,39 +129,44 @@ button{
 </head>
 <body>
     
-    <center>
+    
 
-        <img src="images/logoscholarsgod.png" width="200px" height="250px"> <a href="index.html"><button>Return to Home page</button></a>
+        <img src="images/logoscholarsgod.png" width="50px" height="80px" style="vertical-align:middle"> <a href="index.html"><button>Return to Home page</button></a>
         <a href="contact.html"><button>Contact Us</button></a>
        <hr>
-        <div style="text-align: center; width:100%; background-color:lightblue;">   
-            <h3>
+              <h3 style="text-align: center;">
                   Before  proceeding to Registration, These two steps must be completed.
-            </h3>
-             <div style="text-align: left; min-width:300px;position: relative;left: 40%;">
-              
-                <h4>
-                    <div> <span style="color:red">Step 1: </span> &nbsp;&nbsp; Create Account. >> 
-                        <a href="SignInGoogleButton/signInWithGoogleAccount.html"><button> Sign in / SIGN UP</button></a> 
-                    </div>
+               </h3>
+        <div style="width:100%; background-color:lightblue; text-align: center;">   
+           
+             <div style="min-width:100%;position: relative;">
+               
+                <div style="display: flex; flex-direction: row; width:100%;gap:10px;  text-align: center;padding: 5px;">
+                    <div style="min-width:400px; width: 40%; box-shadow: 5px 5px 10px grey;;">
+                        <div> <span style="color:red">Step 1:  </span> <br><br> Create Account. >>  <br><br>
+                            <a href="SignInGoogleButton/signInWithGoogleAccount.html"><button> Sign in / SIGN UP</button></a> 
+                        </div>
+                        
                     
-                
-                      <h4 style="display: none;"  id="loginEmaiDisplay"> Your Login Email is: <span id="loginEmailName"></span>   , move to Step 2. <br> Re-login If email not  yours,
-                        </h4>
+                        <h4 style="display: none;"  id="loginEmaiDisplay"> Your Login Email is: <span id="loginEmailName"></span>   , move to Step 2. <br> Re-login If email not  yours,
+                            </h4>
 
-                      
+                      </div>
 
-                    <div><span style="color:red">Step 2: </span>&nbsp;&nbsp; # 
+                      <div style="width:50%; box-shadow: 5px 5px 10px grey;">
+                        <span style="color:red">Step 2: </span><br><br>
+                         # 
                         <script>
                             document.write(maintainanceSetting.registrationPriceText);
                         </script> (Naira) Registration Fee,  
                            <h4>Your login email is your payment ID  <button id="payTenK"> Pay Now</button></h4>
-                        </div>
-                       <span style="font-size: 12px;">I have paid before or  having chalengies with payment ? <br>Relogin and payment is validated Or contact us for any help. </span>
-
-                </h4>
+                       <span style="font-size: 12px;"> Having chalengies with payment ? <br>Relogin and payment is validated. </span> <br>
+                    </div>
+                </div>
             </div>
         </div>
+       
+        <center>
        
         <h1>
             <span style="color:red">Step 3</span> <br>
@@ -155,9 +177,10 @@ button{
         </script>) Registration Form</u></h1>
 
 
-   <h3>Contest for Scholarship Abroad and Other awards of excellency.</h3>
+   <h3>Your opportunity is here, your journey starts now.</h3>
 
    
+<div style="width: 100%; display: flex; flex-direction: row;">
    
 <div id="gallaryDisplay"  style="width: 400px; height: 300px; margin: 0% 10% 0% 10%;" >
 
@@ -198,16 +221,25 @@ button{
 </div>
 
 
+<div style="width: 50%;height: 30%; overflow: hidden;">
+        <img src="images/officialImages/officelady.jpg" width="100%" height="100%" /> 
 
+    <!-- <marquee>
+     
+        <img src="images/officialImages/visioiner1.jpg"  width="300px" height="200px" /> 
 
+    </marquee> -->
 
+</div>
+
+</div>
    
    
    <br>
    <br>
         <span> This symbol <span class="important">*</span> indicate compulsory.</span> <br>
 
-
+</center>
 
        <ul id="tabs">
                 <li class="active">Read Document </li>
@@ -250,7 +282,7 @@ button{
                          <br>
                           
               
-                         <button id="goToQuestionier" style="padding:30px">Open Questionier</button>
+                         <button id="goToQuestionier" style="padding:30px">Open Questionnaire</button>
 
                     </div>
                    
@@ -258,29 +290,23 @@ button{
                   </li>
 
                   <li  class="tablistItem">
-
-                    <form>
-                    
-                      <div class="app-wrapper">
-
-      
-                            <header style="background-color: white;">
-                                
-
-                             
-                                    
-                            
-                                        
-                                    <h3 style="max-width: 500px; height: auto; text-align: justify;">With this in mind, kindly provide answers to the following questions (Endeavour to submit your answers within three days of starting this application) <br>
+                        <h3 style=" height: auto; text-align: justify;">
+                            With this in mind, kindly provide answers to the following questions 
+                            (Endeavour to submit your answers within three days of starting this application)
 
                                     Read through the questions below and carefully provide answers.
                                     It is important you avoid the use of internet as much as possible to provide  
                                     the answers as this may mar your chances of being selected. 
                                     We need to evaluate you on the originality of ideas and knowledge and most importantly, your thoughts on the nation’s economic situations.
-                                    </h3>
+                         </h3>
+                   
+                    <form>
+                    
+                      <div class="app-wrapper"  id="quiestionaireSection">
 
-                         
-                                    
+      
+                            
+                                
                                     
                                     <ol>
 
@@ -448,7 +474,7 @@ button{
                             
                     
                           
-                            </header>
+                        
 
                              
 
@@ -460,28 +486,48 @@ button{
 
                  <li class="tablistItem" >
 
-                    <h3  style="color:blue;">Having provided answer to questions, 
-                        <br> Read the instruction carefully and proceed. </h3>
-                  
+          <center>
+                 
         <h4>REGISTER NOW : 
             <div style="width:fit-content;text-align: left;">
 
-           (1) Fill the form below>  <br>
-            (2) Attend Audition>  <br>
-            (3) Nomination >   <br>
-            (4) National Challenge 
-            <br>
-            (5) Evictions
-            <br>
-            (6) Rewards.
+                <table>
+
+                    <tr>
+                        <td>(1) Fill the form below>  </td>
+                        <td>(2) Attend Audition>  
+                       </td>
+                        <td>  (3) Nomination >  </td>
+                    </tr>
+
+                      <tr>
+                        <td>  (4) National Challenge </td>
+                        <td> (5) Evictions</td>
+                        <td> (6) Rewards.</td>
+                    </tr>
+                </table>
+           
+           
+          
+           
+           
+           
         </h4>
             </div>
-        <h5>You most not be a winner to be awarded. Your enagement, vote, passion and activities can award you something equivalent to a winner.</h5>
+        <h5>You win, I win, we win in the scholars college.</h5>
 
         <hr> More detail about 1st, 2nd, 3rd, 4th, 5th,........and activities... visit <button>About Page</button>
         <hr>
         <h2>Fill form bellow and wait for Entry Normination or selection proces.....</h2>
-       
+    </center>
+
+
+    <div  style="width: 100%; display: flex; flex-direction:row;">
+
+ 
+
+    <div  style="width:50%; height: auto; padding-left: 20px;">
+     
         <table>
             <tr>
                 <td>Name <span class="important">*</span>:</td>   
@@ -569,7 +615,7 @@ button{
             </tr>
 
             <tr>
-                <td>Course of study (qualification):</td>
+                <td>Course of study (Discipline ):</td>
                 <td><input type="text" id="courseOfStudy"  placeholder="higest qualification"></td>
 
             </tr>
@@ -648,12 +694,20 @@ button{
             </tr>
            </table>
 
-    </center>
-    
+
     <br>
     <br>
 
-                   
+     </div>              
+   </div>
+
+            
+<div id="gallaryDisplay"  style="width:48%x; height:40%; margin: 0% 10% 0% 10%; position:relative"  >
+
+    
+        <img src="images/banner/AllinOneBanner.gif" width="100%" height="100%" />
+
+</div>
 
                     </li>
     
