@@ -21,6 +21,7 @@ h1{
     padding: 15px;
     display:block;
     text-align: center;
+    
 }
 .navbar a:hover{
     background-color: hsl (0,0%,10%);
